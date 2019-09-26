@@ -14,7 +14,7 @@ All routes contained in the `MovieController` are preceded by a `/movies`.
 
 ### Routes
 
-* `allmovies` - displays all movies in your collection. Will have the functionality for the user to sort collection by movie title, rating, duration, genre, or a specific actor. 
+* `/allmovies` - displays all movies in your collection. Will have the functionality for the user to sort collection by movie title, rating, duration, genre, or a specific actor. 
 
 * `/moviedetail/{id}` - displays the movies information in full detail. This is also where the user is able to mark if the movie is currently loaned out. 
 
