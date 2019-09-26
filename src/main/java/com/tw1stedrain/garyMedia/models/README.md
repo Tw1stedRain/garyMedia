@@ -8,27 +8,6 @@ A series has a top level look at multiple movies or tv seasons that go together.
 
 Movies have a `ManyToOne` realtionship to a series, along with all needed infromation about that movie in particular.
 
-  * `title` 
-  * `coverArt`
-  * `durationInMinutes`
-  * `releaseDate`
-  * `actors`
-  * `dvdOrBluRay`
-  * `genre`
-  * `rating`
-  * `indbLink`
-  * `rottenTomatoes`
-  * `loaned`
-
 ### Tv Season
 
-  * `title` 
-  * `coverArt`
-  * `numOfEpisodes`
-  * `releaseDate`
-  * `actors`
-  * `genre`
-  * `rating`
-  * `indbLink`
-  * `rottenTomatoes`
-  * `loaned`
+Tv Seasons have a `ManyToOne` realtionship to a series, along with all needed infromation about that season in particular.
