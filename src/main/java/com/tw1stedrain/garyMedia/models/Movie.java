@@ -21,11 +21,31 @@ public class Movie {
     private String dvdOrBluRay;
     private String genre;
     private String rating;
-    private String indbLink;
+    private String imdbLink;
     private double rottenTomatoes;
     private boolean loaned;
 
     // TODO: many to one series
+
+    // **************************************************
+    // Constructors
+    // **************************************************
+
+    public Movie(){}
+
+    public Movie(String title, String coverArt, int durration, int releaseDate, List actors, String dvdOrBluRay, String genre, String rating, String indb, double tomatoes){
+        this.title = title;
+        this.coverArt = coverArt;
+        this.durationInMinutes = durration;
+        this.releaseDate = releaseDate;
+        this.actors = actors;
+        this.dvdOrBluRay = dvdOrBluRay;
+        this.genre = genre;
+        this.rating = rating;
+        this.imdbLink = indb;
+        this.rottenTomatoes = tomatoes;
+
+    }
 
     // **************************************************
     // Getters and Setters
@@ -99,12 +119,12 @@ public class Movie {
         this.rating = rating;
     }
 
-    public String getIndbLink() {
-        return indbLink;
+    public String getImdbLink() {
+        return imdbLink;
     }
 
-    public void setIndbLink(String indbLink) {
-        this.indbLink = indbLink;
+    public void setImdbLink(String imdbLink) {
+        this.imdbLink = imdbLink;
     }
 
     public double getRottenTomatoes() {

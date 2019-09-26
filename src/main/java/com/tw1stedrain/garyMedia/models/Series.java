@@ -16,6 +16,19 @@ public class Series {
     private String name;
     private List<String> sequence;
 
+    //TODO: one to many lists of movies or tv series'
+
+    // **************************************************
+    // Constructors
+    // **************************************************
+
+    public Series(){}
+
+    public Series(String name, List sequence){
+        this.name = name;
+        this.sequence = sequence;
+    }
+
     // **************************************************
     // Getters and Setters
     // **************************************************

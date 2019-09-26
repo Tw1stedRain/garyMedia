@@ -26,6 +26,23 @@ public class TvSeason {
 
     // TODO: many to one series
 
+    // **************************************************
+    // Constructors
+    // **************************************************
+
+    public TvSeason(){}
+
+    public TvSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, List actors,int releaseDate, String indbLink, double rottenTomatoes){
+        this.title = title;
+        this.coverArt = coverArt;
+        this.numOfEpisodes = numOfEpisodes;
+        this.genre = genre;
+        this.rating = rating;
+        this.actors = actors;
+        this.releaseDate = releaseDate;
+        this.indbLink = indbLink;
+        this.rottenTomatoes = rottenTomatoes;
+    }
 
     // **************************************************
     // Getters and Setters
