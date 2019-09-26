@@ -1,9 +1,6 @@
 package com.tw1stedrain.garyMedia.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,16 +11,23 @@ public class Movie {
     private long id;
 
     private String title;
-    private String coverArt;
+
+    //TODO: make able to take longer lengths
+    private String coverArt;  // form set to take in URL
+
+
     private int durationInMinutes;
     private int releaseDate;
-    private List<String> actors;
     private String dvdOrBluRay;
     private String genre;
     private String rating;
-    private String imdbLink;
+    private String imdbLink; // form set to take in URL
     private double rottenTomatoes;
     private boolean loaned;
+
+    //TODO: implement actors
+//    @ManyToMany
+//    private List<Actor> actors;
 
     // TODO: many to one series
 
@@ -33,12 +37,11 @@ public class Movie {
 
     public Movie(){}
 
-    public Movie(String title, String coverArt, int durration, int releaseDate, List actors, String dvdOrBluRay, String genre, String rating, String indb, double tomatoes){
+    public Movie(String title, String coverArt, int durration, int releaseDate, String dvdOrBluRay, String genre, String rating, String indb, double tomatoes){
         this.title = title;
         this.coverArt = coverArt;
         this.durationInMinutes = durration;
         this.releaseDate = releaseDate;
-        this.actors = actors;
         this.dvdOrBluRay = dvdOrBluRay;
         this.genre = genre;
         this.rating = rating;
@@ -85,14 +88,6 @@ public class Movie {
 
     public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<String> actors) {
-        this.actors = actors;
     }
 
     public String getDvdOrBluRay() {

@@ -1,5 +1,6 @@
 package com.tw1stedrain.garyMedia.controllers;
 
+import com.tw1stedrain.garyMedia.models.Actor;
 import com.tw1stedrain.garyMedia.models.Movie;
 import com.tw1stedrain.garyMedia.models.MovieRepo;
 import com.tw1stedrain.garyMedia.util.ContentNotFoundException;
@@ -22,6 +23,22 @@ public class MovieController {
 
     @GetMapping("/allmovies")
     public String allMovies(Model model){
+
+        //******************************************************************************
+        // Filler data, tobe removed when create route functioning correctly
+        //******************************************************************************
+
+        Movie serenity = new Movie("Serenity ", "placceholder image", 120, 2001, "dvd", "SiFi", "R", "placeholder URL", 2.5);
+        Movie otherMOvie = new Movie("Blah", "placceholder image", 120, 2001, "dvd", "SiFi", "R", "placeholder URL", 2.5);
+
+        System.out.println(serenity.getTitle());
+            movieRepo.save(serenity);
+            movieRepo.save(otherMOvie);
+        System.out.println(otherMOvie.getTitle());
+
+
+        //******************************************************************************
+
         List<Movie> movies = movieRepo.findAll();
         model.addAttribute("movies", movies);
         return "movies/movies";
@@ -39,13 +56,20 @@ public class MovieController {
 
     @PostMapping("/newmovie")
     public RedirectView createMovie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
+        //TODO: when actors are implemented properly, add them back in
 
-        // TODO: filler data, to be removed when i remember how to pass a list through form data
-        List<String> actors = new ArrayList<>();
-        actors.add("actor one");
-        actors.add("actor two");
+        Movie movie = new Movie();
 
-        Movie movie = new Movie(title, coverArt, duration, releaseDate, actors, dvdOrBluRay, genre, rating, imdb, tomatoes);
+        movie.setTitle(title);
+        movie.setCoverArt(coverArt);
+        movie.setDurationInMinutes(duration);
+        movie.setReleaseDate(releaseDate);
+        movie.setDvdOrBluRay(dvdOrBluRay);
+        movie.setGenre(genre);
+        movie.setRating(rating);
+        movie.setImdbLink(imdb);
+        movie.setRottenTomatoes(tomatoes);
+
         movieRepo.save(movie);
         return new RedirectView("movies/allmovies");
     }

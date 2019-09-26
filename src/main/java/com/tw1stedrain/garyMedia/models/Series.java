@@ -14,7 +14,7 @@ public class Series {
     private long id;
 
     private String name;
-    private List<String> sequence;
+//    private List<String> sequence;
 
     //TODO: one to many lists of movies or tv series'
 
@@ -26,7 +26,7 @@ public class Series {
 
     public Series(String name, List sequence){
         this.name = name;
-        this.sequence = sequence;
+//        this.sequence = sequence;
     }
 
     // **************************************************
@@ -45,11 +45,11 @@ public class Series {
         this.name = name;
     }
 
-    public List<String> getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(List<String> sequence) {
-        this.sequence = sequence;
-    }
+//    public List<String> getSequence() {
+//        return sequence;
+//    }
+//
+//    public void setSequence(List<String> sequence) {
+//        this.sequence = sequence;
+//    }
 }

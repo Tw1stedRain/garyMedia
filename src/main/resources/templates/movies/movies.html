@@ -12,27 +12,27 @@
     <h2>Add a new movie to your collection</h2>
     <form method="post" action="/movies/newmovie">
         <label for="title">Title</label><input id="title" name="title">
-        <label for="coverArt">Cover Art</label><input id="coverArt" name="coverArt">
-        <label for="duration">Duration (in minutes)</label><input id="duration" name="duration">
-        <label for="releaseDate">Realease Year</label><input id="releaseDate" name="releaseDate">
+        <label for="coverArt">Cover Art</label><input id="coverArt" name="coverArt" type="url">
+        <label for="duration">Duration (in minutes)</label><input id="duration" name="duration" type="number">
+        <label for="releaseDate">Realease Year</label><input id="releaseDate" name="releaseDate" type="number">
         <!--<label for="actors">Actors</label><input id="actors" name="actors">-->
         <label for="dvdOrBluRay">DvD or BluRay</label><input id="dvdOrBluRay" name="dvdOrBluRay">
         <label for="genre">Genre</label><input id="genre" name="genre">
         <label for="rating">Rating</label><input id="rating" name="rating">
-        <label for="imdb">IMDB URL</label><input id="imdb" name="imdb">
-        <label for="tomatoes">Rotten Tomatoes URL</label><input id="tomatoes" name="tomatoes">
+        <label for="imdb">IMDB URL</label><input id="imdb" name="imdb" type="url">
+        <label for="tomatoes">Rotten Tomatoes Score</label><input id="tomatoes" name="tomatoes" type="number">
         <input type="submit">
     </form>
 
     <!--TODO: Create a way for the user to sort the movies-->
 
-    <ul>
-        <li th:each="movie : ${movies}">
-            <h3 th:text="movie.getTitle()"></h3>
-            <img th:src="${movie.getCoverArt()}">
-            <!--TODO: add link to detail page-->
-        </li>
-    </ul>
+    <!--<ul>-->
+        <!--<li th:each="movie : ${movies}">-->
+            <!--<h3 th:text="movie.getTitle()"></h3>-->
+            <!--<img th:src="${movie.getCoverArt()}">-->
+            <!--&lt;!&ndash;TODO: add link to detail page&ndash;&gt;-->
+        <!--</li>-->
+    <!--</ul>-->
 
 </body>
 </html>
