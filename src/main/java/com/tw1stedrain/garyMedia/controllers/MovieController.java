@@ -27,7 +27,7 @@ public class MovieController {
         return "movies/movies";
     }
 
-    @GetMapping("/movie/{id}")
+    @GetMapping("/moviedetail/{id}")
     public String thisMovie(
             @PathVariable Long id
     ){
@@ -84,7 +84,7 @@ public class MovieController {
         throw new ContentNotFoundException();
     }
 
-    @DeleteMapping("movie/{id}")
+    @DeleteMapping("/movie/{id}")
     public RedirectView deleteMovie(
             @PathVariable long id
     ){

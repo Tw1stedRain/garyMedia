@@ -1,8 +1,10 @@
 package com.tw1stedrain.garyMedia.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/tv")
 public class TvController {
 
     // TODO: get all tv seasons route
