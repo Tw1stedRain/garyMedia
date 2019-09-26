@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <title>Movie Details</title>
+</head>
+<body>
+    <h1 th:text="${movie.getTitle}"></h1>
+    <img th:src="${movie.getCoverArt}">
+    <p th:text="${movie.getDurationInMinutes}"></p>
+    <!--TODO: give the rest of the detail-->
+
+    <!--TODO: add checkbox to update the loaned out boolean-->
+
+    <!--TODO: add a button that gives user ability to update (maybe a form that stays hidden until button pressed or a link to an update page)-->
+
+</body>
+</html>
