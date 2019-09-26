@@ -35,7 +35,7 @@ public class TvSeason {
     public long getId() {
         return id;
     }
-    
+
     public String getTitle() {
         return title;
     }
