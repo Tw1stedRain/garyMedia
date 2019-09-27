@@ -12,9 +12,8 @@ public class Movie {
 
     private String title;
 
-    //TODO: make able to take longer lengths
+    @Column(columnDefinition="TEXT")
     private String coverArt;  // form set to take in URL
-
 
     private int durationInMinutes;
     private int releaseDate;
@@ -37,15 +36,15 @@ public class Movie {
 
     public Movie(){}
 
-    public Movie(String title, String coverArt, int durration, int releaseDate, String dvdOrBluRay, String genre, String rating, String indb, double tomatoes){
+    public Movie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
         this.title = title;
         this.coverArt = coverArt;
-        this.durationInMinutes = durration;
+        this.durationInMinutes = duration;
         this.releaseDate = releaseDate;
         this.dvdOrBluRay = dvdOrBluRay;
         this.genre = genre;
         this.rating = rating;
-        this.imdbLink = indb;
+        this.imdbLink = imdb;
         this.rottenTomatoes = tomatoes;
 
     }

@@ -17,12 +17,20 @@ public class Actor {
 
     //TODO: implement many to many to the show/movie
 
+    // **************************************************
+    // Constructors
+    // **************************************************
+
     public Actor(){}
 
     public Actor(String firstName, String lastName) {
         this.firstName = firstName;
         this.firstName = lastName;
     }
+
+    // **************************************************
+    // Getters and Setters
+    // **************************************************
 
     public long getId() {
         return id;
