@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <div th:replace="~{common :: styling}"></div>
-    <title>Movie Details</title>
+    <title th:text="${movie.getTitle() + 'Details'}"></title>
 </head>
 <body>
-    <h1 th:text="${movie.getTitle}"></h1>
-    <img th:src="${movie.getCoverArt}">
-    <p th:text="${movie.getDurationInMinutes}"></p>
-    <!--TODO: give the rest of the detail-->
+    <h1 th:text="${movie.getTitle()}"></h1>
+    <img th:src="${movie.getCoverArt()}">
+    <p th:text="${'Runs for ' + movie.getDurationInMinutes() + ' minutes'}"></p>
+    <p th;text="${'Was released in the year ' + movie.getReleaseDate()}"></p>
+    <p th:text="${'Genre: ' + movie.getGenre()}"></p>
+    <p th:text="${movie.getTitle() + ' is rated ' + movie.getRating()}"></p>
+    <p th:text="${'Rotten Tomatoes score of: ' + movie.getRottenTomatoes()}"></p>
+    <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
+
+
+    <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
 
     <!--TODO: add checkbox to update the loaned out boolean-->
 
     <!--TODO: add a button that gives user ability to update (maybe a form that stays hidden until button pressed or a link to an update page)-->
+
+    <form method="post" th:action="${'/movies/update/' + movie.getId()}">
+        <label for="title">Title</label><input id="title" name="title" th:value="${movie.getTitle()}">
+        <label for="coverArt">Cover Art</label><input id="coverArt" name="coverArt" type="url" th:value="${movie.getCoverArt()}">
+        <label for="duration">Duration (in minutes)</label><input id="duration" name="duration" type="number" min="10" th:value="${movie.getDurationInMinutes()}">
+        <label for="releaseDate">Realease Year</label><input id="releaseDate" name="releaseDate" type="number" min="1800" max="3000" th:value="${movie.getReleaseDate()}">
+        <!--<label for="actors">Actors</label><input id="actors" name="actors">-->
+        <label for="dvdOrBluRay">DvD or BluRay</label><input id="dvdOrBluRay" name="dvdOrBluRay" th:value="${movie.getDvdOrBluRay()}">
+        <label for="genre">Genre</label><input id="genre" name="genre" th:value="${movie.getGenre()}">
+        <label for="rating">Rating</label><input id="rating" name="rating" th:value="${movie.getRating()}">
+        <label for="imdb">IMDB URL</label><input id="imdb" name="imdb" type="url" th:value="${movie.getImdbLink()}">
+        <label for="tomatoes">Rotten Tomatoes Score</label><input id="tomatoes" name="tomatoes" type="number" step="0.01" min="0" max="1" th:value="${movie.getRottenTomatoes()}">
+        <input type="submit">
+    </form>
 
 </body>
 </html>

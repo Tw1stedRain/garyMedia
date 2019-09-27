@@ -1,0 +1,31 @@
+body{
+background-color: grey;
+width: 90%;
+margin: auto;
+}
+
+h1{
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+h2{
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+form{
+  margin: 5%;
+}
+
+form > input{
+  display: block;
+  width: 80%;
+  margin-bottom: 5px;
+}
+
+form > input:last-child {
+  margin: 10px;
+  color: red;
+  background-color: black;
+}

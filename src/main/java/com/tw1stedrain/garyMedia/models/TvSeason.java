@@ -1,9 +1,6 @@
 package com.tw1stedrain.garyMedia.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -18,11 +15,14 @@ public class TvSeason {
     private int numOfEpisodes;
     private String genre;
     private String rating;
-    private List<String> actors;
     private int releaseDate;
     private String indbLink;
     private double rottenTomatoes;
     private boolean loaned;
+
+    //TODO: implement actors
+//    @ManyToMany
+//    private List<Actor> actors;
 
     // TODO: many to one series
 
@@ -32,13 +32,12 @@ public class TvSeason {
 
     public TvSeason(){}
 
-    public TvSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, List actors,int releaseDate, String indbLink, double rottenTomatoes){
+    public TvSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String indbLink, double rottenTomatoes){
         this.title = title;
         this.coverArt = coverArt;
         this.numOfEpisodes = numOfEpisodes;
         this.genre = genre;
         this.rating = rating;
-        this.actors = actors;
         this.releaseDate = releaseDate;
         this.indbLink = indbLink;
         this.rottenTomatoes = rottenTomatoes;
@@ -91,14 +90,6 @@ public class TvSeason {
 
     public void setRating(String rating) {
         this.rating = rating;
-    }
-
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<String> actors) {
-        this.actors = actors;
     }
 
     public int getReleaseDate() {

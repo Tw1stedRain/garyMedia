@@ -4,29 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
 @Entity
-public class Series {
+public class Actor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
-//    private List<String> sequence;
+    private String firstName;
+    private String lastName;
 
-    //TODO: one to many lists of movies or tv series'
+    //TODO: implement many to many to the show/movie
 
     // **************************************************
     // Constructors
     // **************************************************
 
-    public Series(){}
+    public Actor(){}
 
-    public Series(String name, List sequence){
-        this.name = name;
-//        this.sequence = sequence;
+    public Actor(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.firstName = lastName;
     }
 
     // **************************************************
@@ -37,19 +36,19 @@ public class Series {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-//    public List<String> getSequence() {
-//        return sequence;
-//    }
-//
-//    public void setSequence(List<String> sequence) {
-//        this.sequence = sequence;
-//    }
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

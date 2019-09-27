@@ -1,5 +1,6 @@
 package com.tw1stedrain.garyMedia.controllers;
 
+import com.tw1stedrain.garyMedia.models.Actor;
 import com.tw1stedrain.garyMedia.models.Movie;
 import com.tw1stedrain.garyMedia.models.MovieRepo;
 import com.tw1stedrain.garyMedia.util.ContentNotFoundException;
@@ -39,15 +40,22 @@ public class MovieController {
 
     @PostMapping("/newmovie")
     public RedirectView createMovie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
+        //TODO: when actors are implemented properly, add them back in
 
-        // TODO: filler data, to be removed when i remember how to pass a list through form data
-        List<String> actors = new ArrayList<>();
-        actors.add("actor one");
-        actors.add("actor two");
+        Movie movie = new Movie(title, coverArt, duration, releaseDate, dvdOrBluRay, genre, rating, imdb, tomatoes);
 
-        Movie movie = new Movie(title, coverArt, duration, releaseDate, actors, dvdOrBluRay, genre, rating, imdb, tomatoes);
         movieRepo.save(movie);
-        return new RedirectView("movies/allmovies");
+        return new RedirectView("/movies/allmovies");
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateMovieRoute(
+            @PathVariable Long id,
+            Model model
+    ){
+        Optional<Movie> movie = movieRepo.findById(id);
+        model.addAttribute("movie", movie.get());
+        return "movies/movieDetailPage";
     }
 
     // TODO: this is where you get to add series connection
