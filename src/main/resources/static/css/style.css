@@ -1,11 +1,23 @@
+html{
+ background-image: url("https://images.unsplash.com/photo-1432139523732-e9d8af332501?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
 body{
-background-color: grey;
+/* background-color: grey; */
 width: 90%;
 margin: auto;
 }
 
+header{
+  background-color: rgba(112,84,64,0.9);
+  padding: 1%;
+}
+
 h1{
   font-size: 40px;
+  color: rgb(177, 175, 173);
   margin-bottom: 12px;
 }
 
@@ -15,17 +27,81 @@ h2{
 }
 
 form{
-  margin: 5%;
+  background-color: rgba(146,116,83,0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
 }
 
-form > input{
-  display: block;
+/* single liners */
+form > div{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+form > div > input{
   width: 80%;
-  margin-bottom: 5px;
+  margin-left: 1%;
+  height: 2.5em;
 }
 
+form > div > label{
+  width: 12%;
+  text-align: end;
+  color: rgba(192,191,190);
+  font-size: 1.5rem;
+}
+
+/* double liners */
+.double > input{
+  margin-left: 1%;
+  display: block;
+  width: 33%;
+  height: 2.5em;
+}
+
+.double > label{
+  width: 12%;
+  text-align: end;
+  color: rgba(192,191,190);
+  font-size: 1.5rem;
+}
+
+/* submit button */
 form > input:last-child {
-  margin: 10px;
-  color: red;
-  background-color: black;
+  font-size: 1.5rem;
+  margin-top: 1%;
+  margin-left: 16%;
+  width: 81%;
+  background-color: rgb(70,73,81, 0.8);
+}
+
+ul{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.movieItems{
+  background-color: rgba(146,116,83,0.7);
+  width: 20%;
+  padding: 1%;
+  margin: 2%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.movieItems > h3{
+  color: rgba(192,191,190);
+  font-size: 1.5rem;
+  width: 90%;
+}
+
+.movieItems > img{
+  height: 75%;
+  width: 40%;
 }
