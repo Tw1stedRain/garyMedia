@@ -70,7 +70,8 @@ public class MovieController {
             @RequestParam String genre,
             @RequestParam String rating,
             @RequestParam String imdb,
-            @RequestParam double tomatoes
+            @RequestParam double tomatoes,
+            @RequestParam boolean loaned
     ){
         Optional<Movie> movie = movieRepo.findById(id);
         if (movie.isPresent()){
@@ -85,6 +86,7 @@ public class MovieController {
             foundMovie.setRating(rating);
             foundMovie.setImdbLink(imdb);
             foundMovie.setRottenTomatoes(tomatoes);
+            foundMovie.setLoaned(loaned);
 
             movieRepo.save(foundMovie);
             return new RedirectView("/movies/allmovies");
@@ -92,11 +94,12 @@ public class MovieController {
         throw new ContentNotFoundException();
     }
 
+
     @DeleteMapping("/movie/{id}")
     public RedirectView deleteMovie(
             @PathVariable long id
     ){
-        movieRepo.deleteById(id);
+        this.movieRepo.deleteById(id);
         return new RedirectView("/movies/allmovies");
     }
 }

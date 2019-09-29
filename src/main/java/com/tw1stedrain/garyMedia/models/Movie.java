@@ -22,7 +22,7 @@ public class Movie {
     private String rating;
     private String imdbLink; // form set to take in URL
     private double rottenTomatoes;
-    private boolean loaned;
+    private boolean loaned = false;
 
     //TODO: implement actors
 //    @ManyToMany

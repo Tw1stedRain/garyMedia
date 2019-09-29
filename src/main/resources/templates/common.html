@@ -5,7 +5,21 @@
 <head th:fragment="styling">
     <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script th:src="@{/js/app.js}"></script>
+
 </head>
+
+<nav th:fragment="navbar">
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a th:href="@{/movies/allmovies}">Series Collection</a></li>
+        <li><a th:href="@{/movies/allmovies}">Movie Collection</a></li>
+        <li><a th:href="@{/movies/allmovies}">TV Collection</a></li>
+        <li><a th:href="@{/movies/allmovies}">Actor Collection</a></li>
+    </ul>
+</nav>
+
 
 </body>
 </html>

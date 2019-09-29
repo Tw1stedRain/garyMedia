@@ -5,14 +5,52 @@ html{
 }
 
 body{
-/* background-color: grey; */
 width: 90%;
 margin: auto;
+}
+
+/* nav styling */
+nav{
+  background-color: rgb(70, 73, 81, 0.8);
+  margin: 5px 0 5px 0;
+}
+
+nav > ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav li{
+  margin: 2% 0 2% 0;
+}
+
+nav a{
+  color: rgb(177, 175, 173);
+  text-decoration: none;
+
 }
 
 header{
   background-color: rgba(112,84,64,0.9);
   padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+
+}
+
+.delete{
+  background-color: rgba(112,84,64, 0.1);
+  width: 20%;
+}
+
+.delete button{
+  background-color: rgb(70,73,81, 0.8);
+    color: rgba(192,191,190);
+      font-size: 1rem;
+
+
 }
 
 h1{
@@ -26,11 +64,44 @@ h2{
   margin-bottom: 15px;
 }
 
+/* details */
+.details{
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+}
+
+.details > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 75px 5px 30px;
+  background-color: rgba(146,116,83,0.3);
+}
+
+.details img{
+  height: 400px;
+  width: 268px;
+  margin-right: 50px;
+}
+
+.details p, a{
+  color: rgba(70, 73, 81);
+  font-size: 1.5rem;
+  line-height: 150%;
+}
+
+/* forms */
+.formsToggle{
+  display: none;
+}
+
 form{
   background-color: rgba(146,116,83,0.8);
   display: flex;
   flex-direction: column;
   padding: 2%;
+  border-radius: 10%;
 }
 
 /* single liners */
@@ -70,6 +141,25 @@ form > div > label{
   font-size: 1.5rem;
 }
 
+form select{
+  font-size: 1.2rem;
+  width: 34%;
+  height: 12%;
+  margin-left: 1%;
+}
+
+.double p{
+   color: rgba(192,191,190);
+  font-size: 1.5rem;
+    margin: 0 0 0 3%;
+
+}
+
+.double .radioLoaned{
+  width: 10%;
+}
+
+
 /* submit button */
 form > input:last-child {
   font-size: 1.5rem;
@@ -104,4 +194,8 @@ ul{
 .movieItems > img{
   height: 75%;
   width: 40%;
+}
+
+footer{
+  height:50px;
 }
