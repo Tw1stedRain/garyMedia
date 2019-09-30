@@ -43,14 +43,29 @@ header{
 .delete{
   background-color: rgba(112,84,64, 0.1);
   width: 20%;
+  box-shadow: none;
+  border: none;
+  margin: 0;
 }
 
 .delete button{
   background-color: rgb(70,73,81, 0.8);
-    color: rgba(192,191,190);
-      font-size: 1rem;
+  color: rgba(192,191,190);
+  font-size: 1rem;
+}
 
+.iAmLoaned{
+  background-color: rgba(248, 233, 93, 0.801);
+  color: black;
+  text-align: center;
+  margin: 2% 0 2% 0;
+  padding: 2% 0 2% 0;
+  border-color: black;
+  border-radius: 50%;
+}
 
+.iAmLoaned > h2 {
+  font-size: 2.5rem;
 }
 
 h1{
@@ -59,9 +74,11 @@ h1{
   margin-bottom: 12px;
 }
 
-h2{
-  font-size: 25px;
-  margin-bottom: 15px;
+.formButton{
+  background-color: rgb(70,73,81, 0.8);
+  font-size: 1.5rem;
+  color: rgba(192,191,190);
+  margin: 2% 0 2% 0;
 }
 
 /* details */
@@ -76,7 +93,7 @@ h2{
   flex-direction: column;
   justify-content: space-between;
   padding: 8px 75px 5px 30px;
-  background-color: rgba(146,116,83,0.3);
+  background-color: rgba(112,84,64,0.8);
 }
 
 .details img{
@@ -86,7 +103,7 @@ h2{
 }
 
 .details p, a{
-  color: rgba(70, 73, 81);
+  color: rgba(177, 175, 173);
   font-size: 1.5rem;
   line-height: 150%;
 }
@@ -101,7 +118,10 @@ form{
   display: flex;
   flex-direction: column;
   padding: 2%;
-  border-radius: 10%;
+  width: 90%;
+  margin: auto;
+  border: 6px solid rgba(146,116,83);
+  box-shadow: 26px 11px 45px 9px rgba(51,48,51,0.7);
 }
 
 /* single liners */
@@ -129,7 +149,6 @@ form > div > label{
 /* double liners */
 .double > input{
   margin-left: 1%;
-  display: block;
   width: 33%;
   height: 2.5em;
 }
@@ -149,16 +168,29 @@ form select{
 }
 
 .double p{
-   color: rgba(192,191,190);
+  color: rgba(192,191,190);
   font-size: 1.5rem;
-    margin: 0 0 0 3%;
-
+  margin: 0 0 0 3%;
 }
 
 .double .radioLoaned{
-  width: 10%;
+  width: 4%;
 }
 
+.reveal-if-active {
+  opacity: 0;
+  overflow: hidden;
+  width: 12%;
+}
+
+input[type="radio"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  overflow: visible;
+}
+
+input[type="radio"]:checked ~ .reveal-if-active input{
+  height: 2.5em;
+}
 
 /* submit button */
 form > input:last-child {
@@ -197,5 +229,30 @@ ul{
 }
 
 footer{
-  height:50px;
+  background-color: rgba(112,84,64,0.9);
+  margin: 55px 0 5px 0;
+  height: 75px;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  }
+
+footer > p{
+  font-size: 1.3rem;
+  color: rgba(192,191,190);
+  text-decoration: none;
+}
+footer > div{
+  display: flex;
+  flex-direction: row;
+  width: 14%;
+}
+
+footer > div > a {
+  font-size: 1rem;
+  color: rgba(192,191,190);
+  text-decoration: none;
+  margin-right: 20%;
 }

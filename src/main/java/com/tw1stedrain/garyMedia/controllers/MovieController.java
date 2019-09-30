@@ -71,7 +71,8 @@ public class MovieController {
             @RequestParam String rating,
             @RequestParam String imdb,
             @RequestParam double tomatoes,
-            @RequestParam boolean loaned
+            @RequestParam boolean loaned,
+            @RequestParam String loanedTo
     ){
         Optional<Movie> movie = movieRepo.findById(id);
         if (movie.isPresent()){
@@ -87,6 +88,7 @@ public class MovieController {
             foundMovie.setImdbLink(imdb);
             foundMovie.setRottenTomatoes(tomatoes);
             foundMovie.setLoaned(loaned);
+            foundMovie.setLoanedTo(loanedTo);
 
             movieRepo.save(foundMovie);
             return new RedirectView("/movies/allmovies");
