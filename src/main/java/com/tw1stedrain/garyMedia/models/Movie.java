@@ -23,6 +23,7 @@ public class Movie {
     private String imdbLink; // form set to take in URL
     private double rottenTomatoes;
     private boolean loaned = false;
+    private String loanedTo;
 
     //TODO: implement actors
 //    @ManyToMany
@@ -135,5 +136,13 @@ public class Movie {
 
     public void setLoaned(boolean loaned) {
         this.loaned = loaned;
+    }
+
+    public String getLoanedTo() {
+        return loanedTo;
+    }
+
+    public void setLoanedTo(String loanedTo) {
+        this.loanedTo = loanedTo;
     }
 }
