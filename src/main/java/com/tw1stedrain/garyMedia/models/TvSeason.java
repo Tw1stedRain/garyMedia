@@ -1,7 +1,6 @@
 package com.tw1stedrain.garyMedia.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class TvSeason {
@@ -16,9 +15,10 @@ public class TvSeason {
     private String genre;
     private String rating;
     private int releaseDate;
-    private String indbLink;
+    private String imdbLink;
     private double rottenTomatoes;
     private boolean loaned;
+    private String loanedTo;
 
     //TODO: implement actors
 //    @ManyToMany
@@ -32,14 +32,14 @@ public class TvSeason {
 
     public TvSeason(){}
 
-    public TvSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String indbLink, double rottenTomatoes){
+    public TvSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String imdbLink, double rottenTomatoes){
         this.title = title;
         this.coverArt = coverArt;
         this.numOfEpisodes = numOfEpisodes;
         this.genre = genre;
         this.rating = rating;
         this.releaseDate = releaseDate;
-        this.indbLink = indbLink;
+        this.imdbLink = imdbLink;
         this.rottenTomatoes = rottenTomatoes;
     }
 
@@ -100,12 +100,12 @@ public class TvSeason {
         this.releaseDate = releaseDate;
     }
 
-    public String getIndbLink() {
-        return indbLink;
+    public String getImdbLink() {
+        return imdbLink;
     }
 
-    public void setIndbLink(String indbLink) {
-        this.indbLink = indbLink;
+    public void setImdbLink(String imdbLink) {
+        this.imdbLink = imdbLink;
     }
 
     public double getRottenTomatoes() {
@@ -122,5 +122,13 @@ public class TvSeason {
 
     public void setLoaned(boolean loaned) {
         this.loaned = loaned;
+    }
+
+    public String getLoanedTo() {
+        return loanedTo;
+    }
+
+    public void setLoanedTo(String loanedTo) {
+        this.loanedTo = loanedTo;
     }
 }

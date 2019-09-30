@@ -27,20 +27,18 @@ public class MovieController {
         model.addAttribute("movies", movies);
         return "movies/movies";
     }
+    // TODO: get all movies to sort (sorted by rating, duration, actor) - may have to be done with a little JS
 
     @GetMapping("/moviedetail/{id}")
     public String thisMovie(
             @PathVariable Long id
     ){
-    // TODO: movie detail page
         return "movies/movieDetailPage";
     }
 
-    // TODO: get all movies to sort (sorted by rating, duration, actor) - may have to be done with a little JS
 
     @PostMapping("/newmovie")
     public RedirectView createMovie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
-        //TODO: when actors are implemented properly, add them back in
 
         Movie movie = new Movie(title, coverArt, duration, releaseDate, dvdOrBluRay, genre, rating, imdb, tomatoes);
 
@@ -58,7 +56,7 @@ public class MovieController {
         return "movies/movieDetailPage";
     }
 
-    // TODO: this is where you get to add series connection
+    // TODO: this is where you get to add series and actor connections (when theyre setup)
     @PostMapping("/update/{id}")
     public RedirectView updateMovie(
             @PathVariable Long id,
@@ -95,7 +93,6 @@ public class MovieController {
         }
         throw new ContentNotFoundException();
     }
-
 
     @DeleteMapping("/movie/{id}")
     public RedirectView deleteMovie(
