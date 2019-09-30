@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <div th:replace="~{common :: styling}"></div>
-    <title th:text="${movie.getTitle() + 'Details'}"></title>
+    <title th:text="${movie.getTitle() + ' Details'}"></title>
 </head>
 
 <body>
@@ -15,6 +15,11 @@
             <button>Remove From Collection</button>
         </form>
     </header>
+
+    <div th:if="${movie.isLoaned() == true}" class="iAmLoaned">
+        <h2 th:text="${'YOU HAVE LOANED ' + movie.getTitle() + ' OUT TO ' + movie.getLoanedTo() }"></h2>
+    </div>
+
     <div class="details">
         <img th:src="${movie.getCoverArt()}">
         <div>
@@ -28,7 +33,6 @@
             </div>
             <div>
                 <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
-                <p th:if="${movie.isLoaned() == true}" th:text="${'You have loaned ' + movie.getTitle() + ' out.'}"></p>
             </div>
         </div>
     </div>
@@ -88,15 +92,19 @@
                 <label for="loaned">Loaned Out</label>
                 <p>Yes</p>
                 <input class="radioLoaned" name="loaned" type="radio" value="true" id="loaned">
+                <div class="reveal-if-active">
+                    <input name="loanedTo" id="loanedTo" placeholder="Loaned Out To">
+                </div>
                 <p>No</p>
                 <input class="radioLoaned" name="loaned" type="radio" value="false">
             </div>
 
             <input type="submit">
         </form>
+    </div>
 
-        <div>
 </body>
-<footer></footer>
+<div th:replace="~{common :: footer}"></div>
+
 
 </html>
