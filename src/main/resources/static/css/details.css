@@ -1,0 +1,52 @@
+.delete{
+  background-color: rgba(112,84,64, 0.1);
+  width: 20%;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+
+.delete button{
+  background-color: rgb(70,73,81, 0.8);
+  color: rgba(192,191,190);
+  font-size: 1rem;
+}
+
+.iAmLoaned{
+  background-color: rgba(248, 233, 93, 0.801);
+  color: black;
+  text-align: center;
+  margin: 2% 0 2% 0;
+  padding: 2% 0 2% 0;
+  border-color: black;
+  border-radius: 50%;
+}
+
+.iAmLoaned > h2 {
+  font-size: 2.5rem;
+}
+.details{
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+}
+
+.details > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 75px 5px 30px;
+  background-color: rgba(112,84,64,0.8);
+}
+
+.details img{
+  height: 400px;
+  width: 268px;
+  margin-right: 50px;
+}
+
+.details p, a{
+  color: rgba(177, 175, 173);
+  font-size: 1.5rem;
+  line-height: 150%;
+}

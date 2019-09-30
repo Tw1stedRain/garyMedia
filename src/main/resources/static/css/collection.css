@@ -1,0 +1,44 @@
+.collectionList{
+  width: 100%;
+  height: 600px;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.movieItems{
+  background-color: rgba(146,116,83,0.7);
+  border: 3px solid rgba(146, 116, 83);
+  height: 250px;
+  width: 20%;
+  padding: 1%;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 19px 30px 48px -34px rgba(51,48,51,0.68);
+}
+
+.movieItems > h3{
+  color: rgba(192,191,190);
+  font-size: 1.5rem;
+  text-align: center;
+  width: 90%;
+  height: 20%;
+  margin: 0 2% 0 2%;
+  overflow: hidden;
+}
+
+.movieItems > img{
+  height: 160px;
+  width: 120px;
+  margin-bottom: 6%;
+}
+
+.movieItems > a{
+  color: rgba(192,191,190);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
