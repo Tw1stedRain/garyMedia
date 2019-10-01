@@ -18,7 +18,7 @@
     </header>
 
     <div th:if="${movie.isLoaned() == true}" class="iAmLoaned">
-        <h2 th:text="${'YOU HAVE LOANED ' + movie.getTitle() + ' OUT TO ' + movie.getLoanedTo() }"></h2>
+        <h2 th:text="${'YOU HAVE LOANED ' + movie.getTitle() + ' OUT TO ' + movie.getLoanedTo()}"></h2>
     </div>
 
     <div class="details">

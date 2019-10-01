@@ -41,7 +41,7 @@ public class TvController {
     public RedirectView createSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String imdbLink, double rottenTomatoes){
 
         TvSeason tvSeason = new TvSeason(title, coverArt, numOfEpisodes, genre, rating, releaseDate, imdbLink, rottenTomatoes);
-        tvRepo.save( tvSeason);
+        tvRepo.save(tvSeason);
         return new RedirectView("/tv/allTv");
     }
 
@@ -66,7 +66,7 @@ public class TvController {
             @RequestParam String rating,
             @RequestParam String dvdOrBluRay,
             @RequestParam int releaseDate,
-            @RequestParam String imbdLink,
+            @RequestParam String imdbLink,
             @RequestParam double rottenTomatoes,
             @RequestParam boolean loaned,
             @RequestParam String loanedTo
@@ -82,7 +82,7 @@ public class TvController {
             foundSeason.setRating(rating);
             foundSeason.setDvdOrBluRay(dvdOrBluRay);
             foundSeason.setReleaseDate(releaseDate);
-            foundSeason.setImdbLink(imbdLink);
+            foundSeason.setImdbLink(imdbLink);
             foundSeason.setRottenTomatoes(rottenTomatoes);
             foundSeason.setLoaned(loaned);
             foundSeason.setLoanedTo(loanedTo);
