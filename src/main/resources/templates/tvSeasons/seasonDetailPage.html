@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="~{common :: styling}"></div>
+    <link th:href="@{/css/details.css}" rel="stylesheet" type="text/css">
+    <title th:text="${season.getTitle() + ' Details'}"></title>
 </head>
+
 <body>
+    <div th:replace="~{common :: navbar}"></div>
+    <header>
+        <h1 th:text="${season.getTitle()}"></h1>
+        <form th:action="${'tv/season/' + season.getId()}" th:method="delete" class="delete">
+            <button>Remove From Collection</button>
+        </form>
+    </header>
+
+    <div th:if="${season.isLoaned() == true}" class="iAmLoaned">
+        <h2 th:text="${'YOU HAVE LOANED ' + season.getTitle() + ' OUT TO ' + season.getLoanedTo() }"></h2>
+    </div>
+
+    <div class="details">
+
+    </div>
+
+    <button type="button" class="formButton">Update Movie</button>
+
+    <div class="formsToggle">
+        <form action="">
+
+        </form>
+    </div>
 
 </body>
+<div th:replace="~{common :: footer}"></div>
+
 </html>
