@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <link th:href="@{/css/details.css}" rel="stylesheet" type="text/css">
+    <title th:text="${actor.getFirstName() + ' ' + actor.getLastName() + ' Details'}"></title>
+</head>
+
+<body>
+    <div th:replace="~{common :: navbar}"></div>
+    <header>
+        <h1 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h1>
+        <form th:action="${'/actors/actor/' + actor.getId()}" th:method="delete" class="delete">
+            <button>Remove From Collection</button>
+        </form>
+    </header>
+
+    <div class="details">
+        <img th:src="${actor.getImageUrl()}">
+        <div>
+            <div>
+                <p th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + '-' + actor.getActiveYearsEnd()}"></p>
+                <a th:href="${actor.getImdbUrl()}" th:text="${'Link to the IMDB page for ' + actor.getFirstName() + ' ' + actor.getLastName()}"></a>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="formButton">Update Actor</button>
+
+    <div class="formsToggle">
+        <form method="post" th:action="${'/actors/update/' + actor.getId()}">
+
+            <div>
+                <label for="imageUrl">Image URL</label>
+                <input type="url" name="imageUrl" id="imageUrl" th:value="${actor.getImageUrl()}">
+            </div>
+            <div class="double">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" th:value="${actor.getFirstName()}">
+
+                <label for="activeYearsStart">Year Started</label>
+                <input type="number" name="activeYearsStart" id="activeYearsStart" th:value="${actor.getActiveYearsStart()}">
+            </div>
+            <div class="double">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" th:value="${actor.getLastName()}">
+
+                <label for="activeYearsEnd">Year Ended</label>
+                <input type="number" name="activeYearsEnd" id="activeYearsEnd" th:value="${actor.getActiveYearsEnd()}">
+            </div>
+            <div>
+                <label for="imdbUrl">IMDB URL</label>
+                <input type="url" name="imdbUrl" id="imdbUrl" th:value="${actor.getImdbUrl()}">
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+
+</body>
+<div th:replace="~{common :: footer}"></div>
+
+</html>

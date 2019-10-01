@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
+    <title>All Actors</title>
+</head>
+
+<body>
+    <div th:replace="~{common :: navbar}"></div>
+    <header>
+        <h1>Actor Collection</h1>
+    </header>
+
+    <button type="button" class="formButton">Add a New Actor to Your Collection</button>
+
+    <div class="formsToggle">
+        <!-- TODO: fix name inputs -->
+        <form method="post" action="/actors/newactor">
+            <div>
+                <label for="imageUrl">Image URL</label>
+                <input type="url" name="imageUrl" id="imageUrl">
+            </div>
+            <div class="double">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName">
+
+                <label for="activeYearsStart">Year Started</label>
+                <input type="number" name="activeYearsStart" id="activeYearsStart" min="1800">
+            </div>
+            <div class="double">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName">
+
+                <label for="activeYearsEnd">Year Ended</label>
+                <input type="number" name="activeYearsEnd" id="activeYearsEnd" min="1800">
+            </div>
+            <div>
+                <label for="imdbUrl">IMDB URL</label>
+                <input type="url" name="imdbUrl" id="imdbUrl">
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+
+    <ul class="collectionList">
+        <li th:each="actor : ${actors}" class="movieItems">
+            <h3 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h3>
+            <img th:src="${actor.getImageUrl()}">
+            <a th:href="${'/actors/update/' + actor.getId()}">Further Detail</a>
+        </li>
+    </ul>
+</body>
+<div th:replace="~{common :: footer}"></div>
+
+</html>

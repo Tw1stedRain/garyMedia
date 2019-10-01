@@ -14,6 +14,14 @@ public class Actor {
 
     private String firstName;
     private String lastName;
+    private int activeYearsStart;
+    private int activeYearsEnd;
+    private String imageUrl;
+    private String imdbUrl;
+
+
+
+
 
     //TODO: implement many to many to the show/movie
 
@@ -23,9 +31,13 @@ public class Actor {
 
     public Actor(){}
 
-    public Actor(String firstName, String lastName) {
+    public Actor(String firstName, String lastName, int activeYearsStart, int activeYearsEnd, String imageUrl, String imdbUrl) {
         this.firstName = firstName;
         this.firstName = lastName;
+        this.activeYearsStart = activeYearsStart;
+        this.activeYearsEnd = activeYearsEnd;
+        this.imageUrl = imageUrl;
+        this.imdbUrl =imdbUrl;
     }
 
     // **************************************************
@@ -50,5 +62,37 @@ public class Actor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getActiveYearsStart() {
+        return activeYearsStart;
+    }
+
+    public void setActiveYearsStart(int activeYearsStart) {
+        this.activeYearsStart = activeYearsStart;
+    }
+
+    public int getActiveYearsEnd() {
+        return activeYearsEnd;
+    }
+
+    public void setActiveYearsEnd(int getActiveYearsEnd) {
+        this.activeYearsEnd = getActiveYearsEnd;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImdbUrl() {
+        return imdbUrl;
+    }
+
+    public void setImdbUrl(String imdbUrl) {
+        this.imdbUrl = imdbUrl;
     }
 }
