@@ -10,14 +10,18 @@ public class TvSeason {
     private long id;
 
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String coverArt;
+
     private int numOfEpisodes;
     private String genre;
     private String rating;
+    private String dvdOrBluRay;
     private int releaseDate;
     private String imdbLink;
     private double rottenTomatoes;
-    private boolean loaned;
+    private boolean loaned = false;
     private String loanedTo;
 
     //TODO: implement actors
@@ -130,5 +134,13 @@ public class TvSeason {
 
     public void setLoanedTo(String loanedTo) {
         this.loanedTo = loanedTo;
+    }
+
+    public String getDvdOrBluRay() {
+        return dvdOrBluRay;
+    }
+
+    public void setDvdOrBluRay(String dvdOrBluRay) {
+        this.dvdOrBluRay = dvdOrBluRay;
     }
 }

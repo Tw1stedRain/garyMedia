@@ -39,6 +39,7 @@ public class TvController {
     // TODO: create a new tv season
     @PostMapping("/newSeason")
     public RedirectView createSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String imdbLink, double rottenTomatoes){
+
         TvSeason tvSeason = new TvSeason(title, coverArt, numOfEpisodes, genre, rating, releaseDate, imdbLink, rottenTomatoes);
         tvRepo.save( tvSeason);
         return new RedirectView("/tv/allTv");
@@ -52,7 +53,7 @@ public class TvController {
     ){
         Optional<TvSeason> season = tvRepo.findById(id);
         model.addAttribute("season", season.get());
-        return "tv/seasonDetailPage";
+        return "tvSeasons/seasonDetailPage";
     }
 
     @PostMapping("/update/{id}")
@@ -63,6 +64,7 @@ public class TvController {
             @RequestParam int numOfEpisodes,
             @RequestParam String genre,
             @RequestParam String rating,
+            @RequestParam String dvdOrBluRay,
             @RequestParam int releaseDate,
             @RequestParam String imbdLink,
             @RequestParam double rottenTomatoes,
@@ -78,6 +80,7 @@ public class TvController {
             foundSeason.setNumOfEpisodes(numOfEpisodes);
             foundSeason.setGenre(genre);
             foundSeason.setRating(rating);
+            foundSeason.setDvdOrBluRay(dvdOrBluRay);
             foundSeason.setReleaseDate(releaseDate);
             foundSeason.setImdbLink(imbdLink);
             foundSeason.setRottenTomatoes(rottenTomatoes);
