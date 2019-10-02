@@ -50,3 +50,12 @@
   font-size: 1.5rem;
   line-height: 150%;
 }
+
+.dead{
+  background-color: rgba(70, 47, 22, 0.7);
+  padding: 15%;
+}
+
+.dead p{
+  color: rgb(84, 127, 169);
+}

@@ -1,8 +1,6 @@
 package com.tw1stedrain.garyMedia.controllers;
 
-import com.tw1stedrain.garyMedia.models.Movie;
-import com.tw1stedrain.garyMedia.models.TvSeason;
-import com.tw1stedrain.garyMedia.models.TvSeasonRepo;
+import com.tw1stedrain.garyMedia.models.*;
 import com.tw1stedrain.garyMedia.util.ContentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +17,9 @@ public class TvController {
 
     @Autowired
     TvSeasonRepo tvRepo;
+
+    @Autowired
+    ActorRepo actorRepo;
 
     @GetMapping("/allTv")
     public String allTv(Model model){
@@ -52,7 +53,9 @@ public class TvController {
             Model model
     ){
         Optional<TvSeason> season = tvRepo.findById(id);
+        List<Actor> actors = actorRepo.findAll();
         model.addAttribute("season", season.get());
+        model.addAttribute("actors", actors);
         return "tvSeasons/seasonDetailPage";
     }
 

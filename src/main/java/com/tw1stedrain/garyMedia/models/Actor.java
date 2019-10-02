@@ -18,6 +18,8 @@ public class Actor {
     private int activeYearsEnd;
     private String imageUrl;
     private String imdbUrl;
+    private boolean dead = false;
+    private int yearDead;
 
 
 
@@ -33,7 +35,7 @@ public class Actor {
 
     public Actor(String firstName, String lastName, int activeYearsStart, int activeYearsEnd, String imageUrl, String imdbUrl) {
         this.firstName = firstName;
-        this.firstName = lastName;
+        this.lastName = lastName;
         this.activeYearsStart = activeYearsStart;
         this.activeYearsEnd = activeYearsEnd;
         this.imageUrl = imageUrl;
@@ -94,5 +96,21 @@ public class Actor {
 
     public void setImdbUrl(String imdbUrl) {
         this.imdbUrl = imdbUrl;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
+    public int getYearDead() {
+        return yearDead;
+    }
+
+    public void setYearDead(int yearDead) {
+        this.yearDead = yearDead;
     }
 }

@@ -51,7 +51,6 @@ public class ActorController {
         return "actors/actorDetailPage";
     }
 
-    //TODO: when db relations set up this is where they go
     @PostMapping("/update/{id}")
     public RedirectView updateActor(
             @PathVariable long id,
@@ -60,7 +59,10 @@ public class ActorController {
             @RequestParam int activeYearsStart,
             @RequestParam int activeYearsEnd,
             @RequestParam String imageUrl,
-            @RequestParam String imdbUrl
+            @RequestParam String imdbUrl,
+            @RequestParam boolean dead,
+            @RequestParam int yearDead
+
     ){
         Optional<Actor> actor = actorRepo.findById(id);
         if (actor.isPresent()){
@@ -72,6 +74,8 @@ public class ActorController {
             foundActor.setActiveYearsEnd(activeYearsEnd);
             foundActor.setImageUrl(imageUrl);
             foundActor.setImdbUrl(imdbUrl);
+            foundActor.setDead(dead);
+            foundActor.setYearDead(yearDead);
 
             actorRepo.save(foundActor);
             return new RedirectView("/actors/allactors");
