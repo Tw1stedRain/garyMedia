@@ -1,5 +1,11 @@
 # Controllers
 
+## Home Controller
+
+### Routes
+
+* `/` - directs the user to the splash page.
+
 ## Series Controller
 
 All routes contained in the `SeriesController` are preceded by a `/series`.
