@@ -1,9 +1,6 @@
 package com.tw1stedrain.garyMedia.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,7 +13,10 @@ public class Series {
     private String name;
     private int yearsRunStart;
     private int yearsRunEnd;
+
+    @Column(columnDefinition = "TEXT")
     private String coverArt;
+
     private String imdbUrl;
 
 
