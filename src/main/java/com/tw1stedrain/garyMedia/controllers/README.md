@@ -6,7 +6,15 @@ All routes contained in the `SeriesController` are preceded by a `/series`.
 
 ### Routes
 
-TBD
+* `/allseries` - displays all series in your collection. Will have the functionality for the user to sort collection by series name. 
+
+* `/seriesdetail/{id}` - displays the series information in full detail.
+
+* `/newseries` - a form at the top of the collection page gives the user the ability to add a new series to their collection.
+
+* `/update/{id}` - gives the user the ability to update the information stored about a single series.
+
+* `/series/{id}` - deletes the series from the users collection.
 
 ## Movie Controller
 
