@@ -87,7 +87,7 @@
                 <select name="actors" id="actors">
                     <option value="" selected hidden>Prominent Actors</option>
                     <!--TODO: add actors attribute to this route-->
-                    <!--<option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="$${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>-->
+                    <option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>
                 </select>
 
                 <label for="loaned">Loaned Out</label>

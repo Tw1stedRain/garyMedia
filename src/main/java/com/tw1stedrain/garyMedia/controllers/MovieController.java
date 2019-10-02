@@ -1,6 +1,7 @@
 package com.tw1stedrain.garyMedia.controllers;
 
 import com.tw1stedrain.garyMedia.models.Actor;
+import com.tw1stedrain.garyMedia.models.ActorRepo;
 import com.tw1stedrain.garyMedia.models.Movie;
 import com.tw1stedrain.garyMedia.models.MovieRepo;
 import com.tw1stedrain.garyMedia.util.ContentNotFoundException;
@@ -20,6 +21,9 @@ public class MovieController {
 
     @Autowired
     MovieRepo movieRepo;
+
+    @Autowired
+    ActorRepo actorRepo;
 
     @GetMapping("/allmovies")
     public String allMovies(Model model){
@@ -52,7 +56,9 @@ public class MovieController {
             Model model
     ){
         Optional<Movie> movie = movieRepo.findById(id);
+        List<Actor> actors = actorRepo.findAll();
         model.addAttribute("movie", movie.get());
+        model.addAttribute("actors", actors);
         return "movies/movieDetailPage";
     }
 
