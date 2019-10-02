@@ -1,9 +1,6 @@
 package com.tw1stedrain.garyMedia.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Actor {
@@ -16,7 +13,10 @@ public class Actor {
     private String lastName;
     private int activeYearsStart;
     private int activeYearsEnd;
+
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
+
     private String imdbUrl;
     private boolean dead = false;
     private int yearDead;
