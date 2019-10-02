@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{common :: styling}"></div>
+    <link th:href="@{/css/details.css}" rel="stylesheet" type="text/css">
+    <title th:text="${series.getName() + ' Details'}"></title>
+</head>
+
+<body>
+    <div th:replace="~{common :: navbar}"></div>
+    <header>
+        <h1 th:text="${series.getName()}"></h1>
+        <form th:action="${'/series/series/' + series.getId()}" th:method="delete" class="delete">
+            <button>Remove From Collection</button>
+        </form>
+    </header>
+    <div class="details">
+        <img th:src="${series.getCoverArt()}">
+        <div>
+            <div>
+                <p th:text="${'Active ' + series.getYearsRunStart() + '-' + series.getYearsRunEnd()}"></p>
+                <a th:href="${series.getImdbUrl()}" th:text="${'Link to the IMDb page for ' + series.getName()}"></a>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="formButton">Update Series</button>
+
+    <div class="formsToggle">
+        <form method="post" th:action="${'/series/update/' + series.getId()}">
+            <div>
+                <label for="name">Series Name</label>
+                <input type="text" name="name" id="name" th:value="${series.getName()}">
+            </div>
+            <div class="double">
+                <label for="yearsRunStart">Start of Series (Year)</label>
+                <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800" th:value="${series.getYearsRunStart()}">
+
+                <label for="yearsRunEnd">End of Series (Year)</label>
+                <input type="number" name="yearsRunEnd" id="yearsRunEnd" th:value="${series.getYearsRunEnd()}">
+            </div>
+            <div>
+                <label for="coverArt">Cover Art</label>
+                <input type="url" name="coverArt" id="coverArt" th:value="${series.getCoverArt()}">
+            </div>
+            <div>
+                <label for="imdbUrl">IMDb URL</label>
+                <input type="url" name="imdbUrl" id="imdbUrl" th:value="${series.getImdbUrl()}">
+            </div>
+
+            <input type="submit">
+        </form>
+    </div>
+
+
+</body>
+<div th:replace="~{common :: footer}"></div>
+
+</html>
