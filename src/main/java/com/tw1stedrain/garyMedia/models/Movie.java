@@ -1,7 +1,7 @@
 package com.tw1stedrain.garyMedia.models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Movie {
@@ -25,9 +25,14 @@ public class Movie {
     private boolean loaned = false;
     private String loanedTo;
 
-    //TODO: implement actors
-//    @ManyToMany
-//    private List<Actor> actors;
+    //TODO: implement movieActors
+    @ManyToMany
+    @JoinTable(
+            name = "movie_actors",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private Set<Actor> movieActors;
 
     // TODO: many to one series
 
@@ -144,5 +149,13 @@ public class Movie {
 
     public void setLoanedTo(String loanedTo) {
         this.loanedTo = loanedTo;
+    }
+
+    public Set<Actor> getMovieActors() {
+        return movieActors;
+    }
+
+    public void setMovieActors(Set<Actor> movieActors) {
+        this.movieActors = movieActors;
     }
 }

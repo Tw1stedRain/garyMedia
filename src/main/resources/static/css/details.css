@@ -51,6 +51,11 @@
   line-height: 150%;
 }
 
+.actorList{
+  height: 60%;
+  overflow: scroll;
+}
+
 .dead{
   background-color: rgba(70, 47, 22, 0.7);
   padding: 15%;

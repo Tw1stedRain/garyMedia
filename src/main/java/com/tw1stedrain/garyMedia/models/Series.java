@@ -2,6 +2,7 @@ package com.tw1stedrain.garyMedia.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Series {
@@ -19,7 +20,11 @@ public class Series {
 
     private String imdbUrl;
 
+    @OneToMany
+    private Set<Movie> movies;
 
+    @OneToMany
+    private Set<TvSeason> tvSeasons;
 
 
     //TODO: one to many lists of movies or tv series'
@@ -85,6 +90,22 @@ public class Series {
 
     public void setImdbUrl(String imdbUrl) {
         this.imdbUrl = imdbUrl;
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public Set<TvSeason> getTvSeasons() {
+        return tvSeasons;
+    }
+
+    public void setTvSeasons(Set<TvSeason> tvSeasons) {
+        this.tvSeasons = tvSeasons;
     }
 
 //    public List<String> getSequence() {

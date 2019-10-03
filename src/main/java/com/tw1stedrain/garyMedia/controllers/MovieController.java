@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/movies")
@@ -76,7 +76,8 @@ public class MovieController {
             @RequestParam String imdb,
             @RequestParam double tomatoes,
             @RequestParam boolean loaned,
-            @RequestParam String loanedTo
+            @RequestParam String loanedTo,
+            @RequestParam Set<Actor> actors
     ){
         Optional<Movie> movie = movieRepo.findById(id);
         if (movie.isPresent()){
@@ -93,9 +94,10 @@ public class MovieController {
             foundMovie.setRottenTomatoes(tomatoes);
             foundMovie.setLoaned(loaned);
             foundMovie.setLoanedTo(loanedTo);
+            foundMovie.setMovieActors(actors);
 
             movieRepo.save(foundMovie);
-            return new RedirectView("/movies/allmovies");
+            return new RedirectView("/movies/update/" + id);
         }
         throw new ContentNotFoundException();
     }

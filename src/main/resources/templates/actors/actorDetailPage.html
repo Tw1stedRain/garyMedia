@@ -12,7 +12,7 @@
     <div th:replace="~{common :: navbar}"></div>
     <header>
         <h1 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h1>
-        <form th:action="${'/actors/actor/' + actor.getId()}" th:method="delete" class="delete">
+        <form th:action="${'/movieActors/actor/' + actor.getId()}" th:method="delete" class="delete">
             <button>Remove From Collection</button>
         </form>
     </header>

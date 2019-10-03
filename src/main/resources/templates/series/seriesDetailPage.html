@@ -23,6 +23,20 @@
                 <p th:text="${'Active ' + series.getYearsRunStart() + '-' + series.getYearsRunEnd()}"></p>
                 <a th:href="${series.getImdbUrl()}" th:text="${'Link to the IMDb page for ' + series.getName()}"></a>
             </div>
+            <div>
+                <ul th:if="${series.getMovies() != null}" class="actorList">
+                    <p>Movies: </p>
+                    <li th:each="movie : ${series.getMovies()}">
+                        <p th:text="${movie.getTitle()}"></p>
+                    </li>
+                </ul>
+                <ul th:if="${series.getTvSeasons() != null}" class="actorList">
+                    <p>TV Seasons: </p>
+                    <li th:each="season : ${series.getTvSeasons()}">
+                        <p th:text="${season.getTitle()}"></p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <button type="button" class="formButton">Update Series</button>
@@ -39,6 +53,19 @@
 
                 <label for="yearsRunEnd">End of Series (Year)</label>
                 <input type="number" name="yearsRunEnd" id="yearsRunEnd" th:value="${series.getYearsRunEnd()}">
+            </div>
+            <div class="double">
+                <label for="movies">Movies in Series</label>
+                <select name="movies" id="movies">
+                    <option value="" selected hidden>Movies in Series</option>
+                    <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
+                </select>
+
+                <label for="tvSeasons">TV Seasons in Series</label>
+                <select name="tvSeasons" id="tvSeasons">
+                    <option value="" selected hidden>TV Seasons in Series</option>
+                    <option th:each="season : ${tvSeasons}" th:value="${season.getId()}" th:text="${season.getTitle()}"></option>
+                </select>
             </div>
             <div>
                 <label for="coverArt">Cover Art</label>

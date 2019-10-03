@@ -33,6 +33,12 @@
                 <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
             </div>
             <div>
+                <ul th:if="${movie.getMovieActors != null}" class="actorList">
+                    <p>Actors: </p>
+                    <li th:each="actor : ${movie.getMovieActors()}">
+                        <p th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></p>
+                    </li>
+                </ul>
                 <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
             </div>
         </div>
@@ -86,7 +92,6 @@
                 <label for="actors">Actors</label>
                 <select name="actors" id="actors">
                     <option value="" selected hidden>Prominent Actors</option>
-                    <!--TODO: add actors attribute to this route-->
                     <option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>
                 </select>
 
