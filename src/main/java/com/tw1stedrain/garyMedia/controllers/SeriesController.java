@@ -71,7 +71,7 @@ public class SeriesController {
             foundSeries.setImdbUrl(imdbUrl);
 
             seriesRepo.save(foundSeries);
-            return new RedirectView("/series/allseries");
+            return new RedirectView("/series/update/" + id);
         }
         throw new ContentNotFoundException();
     }

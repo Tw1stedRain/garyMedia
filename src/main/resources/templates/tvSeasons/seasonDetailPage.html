@@ -33,6 +33,11 @@
                 <a th:href="${season.getImdbLink()}" th:text="${'Link to the IMDB page for ' + season.getTitle()}"></a>
             </div>
             <div>
+                <ul class="actorList">
+                    <li th:each="actor : ${season.getTvActors()}">
+                        <p th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></p>
+                    </li>
+                </ul>
                 <p th:text="${'You own ' + season.getTitle() + ' in ' + season.getDvdOrBluRay() + ' form.'}"></p>
             </div>
         </div>

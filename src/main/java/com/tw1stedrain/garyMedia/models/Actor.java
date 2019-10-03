@@ -1,6 +1,8 @@
 package com.tw1stedrain.garyMedia.models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Actor {
@@ -21,9 +23,11 @@ public class Actor {
     private boolean dead = false;
     private int yearDead;
 
+    @ManyToMany(mappedBy = "movieActors")
+    private List<Movie> movies;
 
-
-
+    @ManyToMany(mappedBy = "tvActors")
+    private List<TvSeason> tvSeasons;
 
     //TODO: implement many to many to the show/movie
 
@@ -112,5 +116,21 @@ public class Actor {
 
     public void setYearDead(int yearDead) {
         this.yearDead = yearDead;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public List<TvSeason> getTvSeasons() {
+        return tvSeasons;
+    }
+
+    public void setTvSeasons(List<TvSeason> tvSeasons) {
+        this.tvSeasons = tvSeasons;
     }
 }

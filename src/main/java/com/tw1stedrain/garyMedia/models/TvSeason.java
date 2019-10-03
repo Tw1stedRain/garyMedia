@@ -1,6 +1,8 @@
 package com.tw1stedrain.garyMedia.models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class TvSeason {
@@ -24,9 +26,13 @@ public class TvSeason {
     private boolean loaned = false;
     private String loanedTo;
 
-    //TODO: implement actors
-//    @ManyToMany
-//    private List<Actor> actors;
+    @ManyToMany
+    @JoinTable(
+            name = "tv_actors",
+            joinColumns = @JoinColumn(name = "tv_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private Set<Actor> tvActors;
 
     // TODO: many to one series
 
@@ -142,5 +148,13 @@ public class TvSeason {
 
     public void setDvdOrBluRay(String dvdOrBluRay) {
         this.dvdOrBluRay = dvdOrBluRay;
+    }
+
+    public Set<Actor> getTvActors() {
+        return tvActors;
+    }
+
+    public void setTvActors(Set<Actor> tvActors) {
+        this.tvActors = tvActors;
     }
 }

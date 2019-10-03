@@ -78,7 +78,7 @@ public class ActorController {
             foundActor.setYearDead(yearDead);
 
             actorRepo.save(foundActor);
-            return new RedirectView("/actors/allactors");
+            return new RedirectView("/actors/update/" + id);
         }
         throw new ContentNotFoundException();
     }

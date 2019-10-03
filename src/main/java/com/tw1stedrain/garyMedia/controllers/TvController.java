@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/tv")
@@ -72,7 +73,8 @@ public class TvController {
             @RequestParam String imdbLink,
             @RequestParam double rottenTomatoes,
             @RequestParam boolean loaned,
-            @RequestParam String loanedTo
+            @RequestParam String loanedTo,
+            @RequestParam Set<Actor> actors
     ){
         Optional<TvSeason> season = tvRepo.findById(id);
         if (season.isPresent()){
@@ -89,9 +91,10 @@ public class TvController {
             foundSeason.setRottenTomatoes(rottenTomatoes);
             foundSeason.setLoaned(loaned);
             foundSeason.setLoanedTo(loanedTo);
+            foundSeason.setTvActors(actors);
 
             tvRepo.save(foundSeason);
-            return new RedirectView("/tv/allTv");
+            return new RedirectView("/tv/update/" + id);
         }
         throw new ContentNotFoundException();
     }
