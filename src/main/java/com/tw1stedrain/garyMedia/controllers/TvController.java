@@ -47,7 +47,7 @@ public class TvController {
         return new RedirectView("/tv/allTv");
     }
 
-    // TODO: this is where you get to add series and actor connections (when theyre setup)
+    // TODO: this is where you get to add series connections (when theyre setup)
     @GetMapping("/update/{id}")
     public String updateTvSeasonRoute(
             @PathVariable Long id,

@@ -32,8 +32,9 @@
                 <p th:text="${'Rotten Tomatoes score of: ' + movie.getRottenTomatoes()}"></p>
                 <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
             </div>
-            <div th:if="movie.getMovieActors != null">
-                <ul class="actorList">
+            <div>
+                <ul th:if="${movie.getMovieActors != null}" class="actorList">
+                    <p>Actors: </p>
                     <li th:each="actor : ${movie.getMovieActors()}">
                         <p th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></p>
                     </li>
