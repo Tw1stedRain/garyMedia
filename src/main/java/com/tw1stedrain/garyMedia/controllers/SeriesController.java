@@ -69,8 +69,8 @@ public class SeriesController {
             @RequestParam int yearsRunEnd,
             @RequestParam String coverArt,
             @RequestParam String imdbUrl,
-            @RequestParam Set<Movie> movies,
-            @RequestParam Set<TvSeason> tvSeasons
+            @RequestParam Movie movie,
+            @RequestParam TvSeason tvSeason
             ){
         Optional<Series> series = seriesRepo.findById(id);
         if (series.isPresent()){
@@ -81,8 +81,8 @@ public class SeriesController {
             foundSeries.setYearsRunEnd(yearsRunEnd);
             foundSeries.setCoverArt(coverArt);
             foundSeries.setImdbUrl(imdbUrl);
-            foundSeries.setMovies(movies);
-            foundSeries.setTvSeasons(tvSeasons);
+            foundSeries.addMovie(movie);
+            foundSeries.addSeason(tvSeason);
 
             seriesRepo.save(foundSeries);
             return new RedirectView("/series/update/" + id);

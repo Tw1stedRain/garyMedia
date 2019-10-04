@@ -27,9 +27,6 @@ public class Series {
     private Set<TvSeason> tvSeasons;
 
 
-    //TODO: one to many lists of movies or tv series'
-//    private List<String> sequence;
-
     // **************************************************
     // Constructors
     // **************************************************
@@ -100,6 +97,10 @@ public class Series {
         this.movies = movies;
     }
 
+    public void addMovie(Movie movie){
+        movies.add(movie);
+    }
+
     public Set<TvSeason> getTvSeasons() {
         return tvSeasons;
     }
@@ -108,11 +109,8 @@ public class Series {
         this.tvSeasons = tvSeasons;
     }
 
-//    public List<String> getSequence() {
-//        return sequence;
-//    }
-//
-//    public void setSequence(List<String> sequence) {
-//        this.sequence = sequence;
-//    }
+    public void addSeason(TvSeason season){
+        tvSeasons.add(season);
+    }
+
 }

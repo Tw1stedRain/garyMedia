@@ -90,8 +90,8 @@
                 <input id="imdbLink" name="imdbLink" type="url" th:value="${season.getImdbLink()}">
             </div>
             <div class="double">
-                <label for="actors">Actors</label>
-                <select name="actors" id="actors">
+                <label for="actor">Actors</label>
+                <select name="actor" id="actor">
                     <option value="" selected hidden>Prominent Actors</option>
                     <option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>
                 </select>
