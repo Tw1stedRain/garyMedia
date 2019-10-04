@@ -35,7 +35,7 @@
             <div>
                 <ul class="actorList">
                     <li th:each="actor : ${season.getTvActors()}">
-                        <p th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></p>
+                        <a th:href="${'/actors/update/' + actor.getId()}" th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></a>
                     </li>
                 </ul>
                 <p th:text="${'You own ' + season.getTitle() + ' in ' + season.getDvdOrBluRay() + ' form.'}"></p>

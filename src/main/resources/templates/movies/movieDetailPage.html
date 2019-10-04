@@ -33,10 +33,9 @@
                 <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
             </div>
             <div>
-                <ul th:if="${movie.getMovieActors() != null}" class="actorList">
-                    <p>Actors: </p>
+                <ul class="actorList">
                     <li th:each="actor : ${movie.getMovieActors()}">
-                        <p th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></p>
+                        <a th:href="${'/actors/update/' + actor.getId()}" th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></a>
                     </li>
                 </ul>
                 <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
