@@ -90,6 +90,44 @@ public class SeriesController {
         throw new ContentNotFoundException();
     }
 
+    @PostMapping("/removemovie/{seriesid}/{movieid}")
+    public RedirectView removeMovie(
+            @PathVariable long seriesid,
+            @PathVariable long movieid
+    ){
+        Optional<Series> series = seriesRepo.findById(seriesid);
+        Optional<Movie> movie = movieRepo.findById(movieid);
+        if (series.isPresent()){
+            Series foundSeries = series.get();
+            if (movie.isPresent()){
+                Movie foundMovie = movie.get();
+                foundSeries.removeMovie(foundMovie);
+            }
+            seriesRepo.save(foundSeries);
+            return new RedirectView("/series/update/" + seriesid);
+        }
+        throw new ContentNotFoundException();
+    }
+
+    @PostMapping("/removeseason/{seriesid}/{seasonid}")
+    public RedirectView removeSeason(
+            @PathVariable long seriesid,
+            @PathVariable long seasonid
+    ){
+        Optional<Series> series = seriesRepo.findById(seriesid);
+        Optional<TvSeason> season = tvSeasonRepo.findById(seasonid);
+        if (series.isPresent()){
+            Series foundSeries = series.get();
+            if (season.isPresent()){
+                TvSeason foundSeason = season.get();
+                foundSeries.removeSeason(foundSeason);
+            }
+            seriesRepo.save(foundSeries);
+            return new RedirectView("/series/update/" + seriesid);
+        }
+        throw new ContentNotFoundException();
+    }
+
 
     @DeleteMapping("/series/{id}")
     public RedirectView deleteSeries(

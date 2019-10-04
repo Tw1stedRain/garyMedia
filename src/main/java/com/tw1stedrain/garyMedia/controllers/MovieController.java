@@ -95,8 +95,29 @@ public class MovieController {
             foundMovie.setLoaned(loaned);
             foundMovie.setLoanedTo(loanedTo);
             foundMovie.addMovieActor(actor);
+
             movieRepo.save(foundMovie);
             return new RedirectView("/movies/update/" + id);
+        }
+        throw new ContentNotFoundException();
+    }
+
+    @PostMapping("/removeactor/{movieid}/{actorid}")
+    public RedirectView removeActor(
+            @PathVariable long movieid,
+            @PathVariable long actorid
+    ){
+        Optional<Movie> movie = movieRepo.findById(movieid);
+        Optional<Actor> actor = actorRepo.findById(actorid);
+        if (movie.isPresent()){
+            Movie foundMovie = movie.get();
+            if (actor.isPresent()){
+                Actor foundActor = actor.get();
+                foundMovie.removeMovieActor(foundActor);
+
+            }
+            movieRepo.save(foundMovie);
+            return new RedirectView("/movies/update/" + movieid);
         }
         throw new ContentNotFoundException();
     }
@@ -109,3 +130,4 @@ public class MovieController {
         return new RedirectView("/movies/allmovies");
     }
 }
+

@@ -56,6 +56,26 @@
   overflow: scroll;
 }
 
+.actorList li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.actorList form{
+  height: 1%;
+  width: 10%;
+  margin: 0 5%;
+  border: 0;
+  padding: 0;
+  background-color: rgba(133, 110, 96);
+  box-shadow: none;
+}
+
+.actorList form input{
+  font-size: 1rem;
+}
+
 .dead{
   background-color: rgba(70, 47, 22, 0.7);
   padding: 15%;
