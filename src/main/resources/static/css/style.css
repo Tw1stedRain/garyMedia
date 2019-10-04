@@ -174,3 +174,21 @@ footer > div > a {
   text-decoration: none;
   margin-right: 20%;
 }
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(192,191,190);
+  border-radius: 10px;
+}

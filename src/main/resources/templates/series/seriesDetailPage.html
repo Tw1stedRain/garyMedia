@@ -27,13 +27,13 @@
                 <ul th:if="${series.getMovies() != null}" class="actorList">
                     <p>Movies: </p>
                     <li th:each="movie : ${series.getMovies()}">
-                        <p th:text="${movie.getTitle()}"></p>
+                        <a th:href="${'/movies/update/' + movie.getId()}" th:text="${movie.getTitle()}"></a>
                     </li>
                 </ul>
                 <ul th:if="${series.getTvSeasons() != null}" class="actorList">
                     <p>TV Seasons: </p>
                     <li th:each="season : ${series.getTvSeasons()}">
-                        <p th:text="${season.getTitle()}"></p>
+                        <a th:href="${'/tv/update/' + season.getId()}" th:text="${season.getTitle()}"></a>
                     </li>
                 </ul>
             </div>
