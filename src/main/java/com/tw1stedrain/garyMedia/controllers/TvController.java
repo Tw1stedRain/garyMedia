@@ -74,7 +74,7 @@ public class TvController {
             @RequestParam double rottenTomatoes,
             @RequestParam boolean loaned,
             @RequestParam String loanedTo,
-            @RequestParam Set<Actor> actors
+            @RequestParam Actor actor
     ){
         Optional<TvSeason> season = tvRepo.findById(id);
         if (season.isPresent()){
@@ -91,7 +91,8 @@ public class TvController {
             foundSeason.setRottenTomatoes(rottenTomatoes);
             foundSeason.setLoaned(loaned);
             foundSeason.setLoanedTo(loanedTo);
-            foundSeason.setTvActors(actors);
+//            foundSeason.setTvActors(actors);
+            foundSeason.addTvActor(actor);
 
             tvRepo.save(foundSeason);
             return new RedirectView("/tv/update/" + id);

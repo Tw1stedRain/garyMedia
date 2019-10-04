@@ -55,14 +55,14 @@
                 <input type="number" name="yearsRunEnd" id="yearsRunEnd" th:value="${series.getYearsRunEnd()}">
             </div>
             <div class="double">
-                <label for="movies">Movies in Series</label>
-                <select name="movies" id="movies">
+                <label for="movie">Movies in Series</label>
+                <select name="movie" id="movie">
                     <option value="" selected hidden>Movies in Series</option>
                     <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
                 </select>
 
-                <label for="tvSeasons">TV Seasons in Series</label>
-                <select name="tvSeasons" id="tvSeasons">
+                <label for="tvSeason">TV Seasons in Series</label>
+                <select name="tvSeason" id="tvSeason">
                     <option value="" selected hidden>TV Seasons in Series</option>
                     <option th:each="season : ${tvSeasons}" th:value="${season.getId()}" th:text="${season.getTitle()}"></option>
                 </select>

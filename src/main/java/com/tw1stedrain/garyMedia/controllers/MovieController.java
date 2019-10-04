@@ -77,7 +77,7 @@ public class MovieController {
             @RequestParam double tomatoes,
             @RequestParam boolean loaned,
             @RequestParam String loanedTo,
-            @RequestParam Set<Actor> actors
+            @RequestParam Actor actor
     ){
         Optional<Movie> movie = movieRepo.findById(id);
         if (movie.isPresent()){
@@ -94,8 +94,7 @@ public class MovieController {
             foundMovie.setRottenTomatoes(tomatoes);
             foundMovie.setLoaned(loaned);
             foundMovie.setLoanedTo(loanedTo);
-            foundMovie.setMovieActors(actors);
-
+            foundMovie.addMovieActor(actor);
             movieRepo.save(foundMovie);
             return new RedirectView("/movies/update/" + id);
         }

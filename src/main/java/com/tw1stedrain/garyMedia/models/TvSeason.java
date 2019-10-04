@@ -157,4 +157,8 @@ public class TvSeason {
     public void setTvActors(Set<Actor> tvActors) {
         this.tvActors = tvActors;
     }
+
+    public void addTvActor(Actor tvActor){
+        tvActors.add(tvActor);
+    }
 }
