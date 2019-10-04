@@ -28,12 +28,18 @@
                     <p>Movies: </p>
                     <li th:each="movie : ${series.getMovies()}">
                         <a th:href="${'/movies/update/' + movie.getId()}" th:text="${movie.getTitle()}"></a>
+                        <form method="POST" th:action="${'/series/removemovie/' + series.getId() + '/' + movie.getId()}">
+                            <input type="submit" value="X">
+                        </form>
                     </li>
                 </ul>
                 <ul th:if="${series.getTvSeasons() != null}" class="actorList">
                     <p>TV Seasons: </p>
                     <li th:each="season : ${series.getTvSeasons()}">
                         <a th:href="${'/tv/update/' + season.getId()}" th:text="${season.getTitle()}"></a>
+                        <form method="POST" th:action="${'/series/removeseason/' + series.getId() + '/' + season.getId()}">
+                            <input type="submit" value="X">
+                        </form>
                     </li>
                 </ul>
             </div>

@@ -101,6 +101,12 @@ public class Series {
         movies.add(movie);
     }
 
+    public void removeMovie(Movie movie){
+        if (movies.contains(movie)){
+            movies.remove(movie);
+        }
+    }
+
     public Set<TvSeason> getTvSeasons() {
         return tvSeasons;
     }
@@ -111,6 +117,12 @@ public class Series {
 
     public void addSeason(TvSeason season){
         tvSeasons.add(season);
+    }
+
+    public void removeSeason(TvSeason season){
+        if (tvSeasons.contains(season)){
+            tvSeasons.remove(season);
+        }
     }
 
 }

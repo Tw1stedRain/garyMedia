@@ -161,4 +161,10 @@ public class TvSeason {
     public void addTvActor(Actor tvActor){
         tvActors.add(tvActor);
     }
+
+    public void removeTvActor(Actor tvActor){
+        if (tvActors.contains(tvActor)) {
+            tvActors.remove(tvActor);
+        }
+    }
 }

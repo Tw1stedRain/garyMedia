@@ -91,11 +91,30 @@ public class TvController {
             foundSeason.setRottenTomatoes(rottenTomatoes);
             foundSeason.setLoaned(loaned);
             foundSeason.setLoanedTo(loanedTo);
-//            foundSeason.setTvActors(actors);
             foundSeason.addTvActor(actor);
 
             tvRepo.save(foundSeason);
             return new RedirectView("/tv/update/" + id);
+        }
+        throw new ContentNotFoundException();
+    }
+
+    @PostMapping("/removeactor/{seasonid}/{actorid}")
+    public RedirectView removeActor(
+            @PathVariable long seasonid,
+            @PathVariable long actorid
+    ){
+        Optional<TvSeason> season = tvRepo.findById(seasonid);
+        Optional<Actor> actor = actorRepo.findById(actorid);
+        if (season.isPresent()){
+            TvSeason foundSeason = season.get();
+            if (actor.isPresent()){
+                Actor foundActor = actor.get();
+                foundSeason.removeTvActor(foundActor);
+
+            }
+            tvRepo.save(foundSeason);
+            return new RedirectView("/tv/update/" + seasonid);
         }
         throw new ContentNotFoundException();
     }

@@ -162,4 +162,10 @@ public class Movie {
     public void addMovieActor(Actor actor){
         movieActors.add(actor);
     }
+
+    public void removeMovieActor(Actor movieActor){
+        if (movieActors.contains(movieActor)){
+            movieActors.remove(movieActor);
+        }
+    }
 }

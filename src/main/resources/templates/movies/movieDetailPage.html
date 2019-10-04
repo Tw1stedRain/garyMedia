@@ -36,6 +36,10 @@
                 <ul class="actorList">
                     <li th:each="actor : ${movie.getMovieActors()}">
                         <a th:href="${'/actors/update/' + actor.getId()}" th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></a>
+                        <form method="POST" th:action="${'/movies/removeactor/' + movie.getId() + '/' + actor.getId()}">
+                            <input type="submit" value="X">
+                        </form>
+
                     </li>
                 </ul>
                 <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
