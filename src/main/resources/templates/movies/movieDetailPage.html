@@ -10,110 +10,110 @@
 
 <body>
     <div th:replace="~{common :: navbar}"></div>
-    <header>
-        <h1 th:text="${movie.getTitle()}"></h1>
-        <form th:action="${'/movies/movie/' + movie.getId()}" th:method="delete" class="delete">
-            <button>Remove From Collection</button>
-        </form>
-    </header>
+    <main>
+        <header>
+            <h1 th:text="${movie.getTitle()}"></h1>
+            <form th:action="${'/movies/movie/' + movie.getId()}" th:method="delete" class="delete">
+                <button>Remove From Collection</button>
+            </form>
+        </header>
 
-    <div th:if="${movie.isLoaned() == true}" class="iAmLoaned">
-        <h2 th:text="${'YOU HAVE LOANED ' + movie.getTitle() + ' OUT TO ' + movie.getLoanedTo()}"></h2>
-    </div>
+        <div th:if="${movie.isLoaned() == true}" class="iAmLoaned">
+            <h2 th:text="${'YOU HAVE LOANED ' + movie.getTitle() + ' OUT TO ' + movie.getLoanedTo()}"></h2>
+        </div>
 
-    <div class="details">
-        <img th:src="${movie.getCoverArt()}">
-        <div>
+        <div class="details">
+            <img th:src="${movie.getCoverArt()}">
             <div>
-                <p th:text="${'Runs for ' + movie.getDurationInMinutes() + ' minutes'}"></p>
-                <p th:text="${'Was released in the year ' + movie.getReleaseDate()}"></p>
-                <p th:text="${'Genre: ' + movie.getGenre()}"></p>
-                <p th:text="${movie.getTitle() + ' is rated ' + movie.getRating()}"></p>
-                <p th:text="${'Rotten Tomatoes score of: ' + movie.getRottenTomatoes()}"></p>
-                <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
-            </div>
-            <div>
-                <ul class="actorList">
-                    <li th:each="actor : ${movie.getMovieActors()}">
-                        <a th:href="${'/actors/update/' + actor.getId()}" th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></a>
-                        <form method="POST" th:action="${'/movies/removeactor/' + movie.getId() + '/' + actor.getId()}">
-                            <input type="submit" value="X">
-                        </form>
+                <div>
+                    <p th:text="${'Runs for ' + movie.getDurationInMinutes() + ' minutes'}"></p>
+                    <p th:text="${'Was released in the year ' + movie.getReleaseDate()}"></p>
+                    <p th:text="${'Genre: ' + movie.getGenre()}"></p>
+                    <p th:text="${movie.getTitle() + ' is rated ' + movie.getRating()}"></p>
+                    <p th:text="${'Rotten Tomatoes score of: ' + movie.getRottenTomatoes()}"></p>
+                    <a th:href="${movie.getImdbLink()}" th:text="${'Link to the IMDB page for ' + movie.getTitle()}"></a>
+                </div>
+                <div>
+                    <ul class="actorList">
+                        <li th:each="actor : ${movie.getMovieActors()}">
+                            <a th:href="${'/actors/update/' + actor.getId()}" th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></a>
+                            <form method="POST" th:action="${'/movies/removeactor/' + movie.getId() + '/' + actor.getId()}">
+                                <input type="submit" value="X">
+                            </form>
 
-                    </li>
-                </ul>
-                <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
+                        </li>
+                    </ul>
+                    <p th:text="${'You own ' + movie.getTitle() + ' in ' + movie.getDvdOrBluRay() + ' form.'}"></p>
+                </div>
             </div>
         </div>
-    </div>
-    <button type="button" class="formButton">Update Movie</button>
+        <button type="button" class="formButton">Update Movie</button>
 
-    <div class="formsToggle">
-        <form method="post" th:action="${'/movies/update/' + movie.getId()}">
-            <div>
-                <label for="title">Title</label>
-                <input id="title" name="title" th:value="${movie.getTitle()}">
-            </div>
-            <div>
-                <label for="coverArt">Cover Art</label>
-                <input id="coverArt" name="coverArt" type="url" th:value="${movie.getCoverArt()}">
-            </div>
-            <div class="double">
-                <label for="duration">Duration (in minutes)</label>
-                <input id="duration" name="duration" type="number" min="10" th:value="${movie.getDurationInMinutes()}">
-
-                <label for="releaseDate">Realease Year</label>
-                <input id="releaseDate" name="releaseDate" type="number" min="1800" max="3000" th:value="${movie.getReleaseDate()}">
-            </div>
-            <div class="double">
-                <label for="dvdOrBluRay">DvD or BluRay</label>
-                <input id="dvdOrBluRay" name="dvdOrBluRay" th:value="${movie.getDvdOrBluRay()}">
-
-                <label for="genre">Genre</label>
-                <input id="genre" name="genre" th:value="${movie.getGenre()}">
-            </div>
-            <div class="double">
-                <label for="rating">Rating</label>
-                <select name="rating" id="rating">
-                    <option value="" hidden>MPAA Rating</option>
-                    <option value="notYetRated">Not Yet Rated</option>
-                    <option value="G">G</option>
-                    <option value="PG">PG</option>
-                    <option value="PG-13">PG-13</option>
-                    <option value="R">R</option>
-                    <option value="NC-17">NC-17</option>
-                </select>
-
-                <label for="tomatoes">Rotten Tomatoes Score</label>
-                <input id="tomatoes" name="tomatoes" type="number" step="0.01" min="0" max="1" th:value="${movie.getRottenTomatoes()}">
-            </div>
-            <div>
-                <label for="imdb">IMDB URL</label>
-                <input id="imdb" name="imdb" type="url" th:value="${movie.getImdbLink()}">
-            </div>
-            <div class="double">
-                <label for="actor">Actors</label>
-                <select name="actor" id="actor">
-                    <option value="" selected hidden>Prominent Actors</option>
-                    <option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>
-                </select>
-
-                <label for="loaned">Loaned Out</label>
-                <p>Yes</p>
-                <input class="radioLoaned" name="loaned" type="radio" value="true" id="loaned">
-                <div class="reveal-if-active">
-                    <input name="loanedTo" id="loanedTo" placeholder="Loaned Out To">
+        <div class="formsToggle">
+            <form method="post" th:action="${'/movies/update/' + movie.getId()}">
+                <div>
+                    <label for="title">Title</label>
+                    <input id="title" name="title" th:value="${movie.getTitle()}">
                 </div>
-                <p>No</p>
-                <input class="radioLoaned" name="loaned" type="radio" value="false">
-            </div>
+                <div>
+                    <label for="coverArt">Cover Art</label>
+                    <input id="coverArt" name="coverArt" type="url" th:value="${movie.getCoverArt()}">
+                </div>
+                <div class="double">
+                    <label for="duration">Duration (in minutes)</label>
+                    <input id="duration" name="duration" type="number" min="10" th:value="${movie.getDurationInMinutes()}">
 
-            <input type="submit">
-        </form>
-    </div>
+                    <label for="releaseDate">Realease Year</label>
+                    <input id="releaseDate" name="releaseDate" type="number" min="1800" max="3000" th:value="${movie.getReleaseDate()}">
+                </div>
+                <div class="double">
+                    <label for="dvdOrBluRay">DvD or BluRay</label>
+                    <input id="dvdOrBluRay" name="dvdOrBluRay" th:value="${movie.getDvdOrBluRay()}">
 
+                    <label for="genre">Genre</label>
+                    <input id="genre" name="genre" th:value="${movie.getGenre()}">
+                </div>
+                <div class="double">
+                    <label for="rating">Rating</label>
+                    <select name="rating" id="rating">
+                        <option value="" hidden>MPAA Rating</option>
+                        <option value="notYetRated">Not Yet Rated</option>
+                        <option value="G">G</option>
+                        <option value="PG">PG</option>
+                        <option value="PG-13">PG-13</option>
+                        <option value="R">R</option>
+                        <option value="NC-17">NC-17</option>
+                    </select>
+
+                    <label for="tomatoes">Rotten Tomatoes Score</label>
+                    <input id="tomatoes" name="tomatoes" type="number" step="0.01" min="0" max="1" th:value="${movie.getRottenTomatoes()}">
+                </div>
+                <div>
+                    <label for="imdb">IMDB URL</label>
+                    <input id="imdb" name="imdb" type="url" th:value="${movie.getImdbLink()}">
+                </div>
+                <div class="double">
+                    <label for="actor">Actors</label>
+                    <select name="actor" id="actor">
+                        <option value="" selected hidden>Prominent Actors</option>
+                        <option th:each="actor : ${actors}" th:value="${actor.getId()}" th:text="${actor.getFirstName()} + ' ' + ${actor.getLastName()}"></option>
+                    </select>
+
+                    <label for="loaned">Loaned Out</label>
+                    <p>Yes</p>
+                    <input class="radioLoaned" name="loaned" type="radio" value="true" id="loaned">
+                    <div class="reveal-if-active">
+                        <input name="loanedTo" id="loanedTo" placeholder="Loaned Out To">
+                    </div>
+                    <p>No</p>
+                    <input class="radioLoaned" name="loaned" type="radio" value="false">
+                </div>
+
+                <input type="submit">
+            </form>
+        </div>
+    </main>
+    <div th:replace="~{common :: footer}"></div>
 </body>
-<div th:replace="~{common :: footer}"></div>
-
 
 </html>
