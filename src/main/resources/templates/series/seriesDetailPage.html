@@ -10,84 +10,84 @@
 
 <body>
     <div th:replace="~{common :: navbar}"></div>
-    <header>
-        <h1 th:text="${series.getName()}"></h1>
-        <form th:action="${'/series/series/' + series.getId()}" th:method="delete" class="delete">
-            <button>Remove From Collection</button>
-        </form>
-    </header>
-    <div class="details">
-        <img th:src="${series.getCoverArt()}">
-        <div>
+    <main>
+        <header>
+            <h1 th:text="${series.getName()}"></h1>
+            <form th:action="${'/series/series/' + series.getId()}" th:method="delete" class="delete">
+                <button>Remove From Collection</button>
+            </form>
+        </header>
+        <div class="details">
+            <img th:src="${series.getCoverArt()}">
             <div>
-                <p th:text="${'Active ' + series.getYearsRunStart() + '-' + series.getYearsRunEnd()}"></p>
-                <a th:href="${series.getImdbUrl()}" th:text="${'Link to the IMDb page for ' + series.getName()}"></a>
-            </div>
-            <div>
-                <ul th:if="${series.getMovies() != null}" class="actorList">
-                    <p>Movies: </p>
-                    <li th:each="movie : ${series.getMovies()}">
-                        <a th:href="${'/movies/update/' + movie.getId()}" th:text="${movie.getTitle()}"></a>
-                        <form method="POST" th:action="${'/series/removemovie/' + series.getId() + '/' + movie.getId()}">
-                            <input type="submit" value="X">
-                        </form>
-                    </li>
-                </ul>
-                <ul th:if="${series.getTvSeasons() != null}" class="actorList">
-                    <p>TV Seasons: </p>
-                    <li th:each="season : ${series.getTvSeasons()}">
-                        <a th:href="${'/tv/update/' + season.getId()}" th:text="${season.getTitle()}"></a>
-                        <form method="POST" th:action="${'/series/removeseason/' + series.getId() + '/' + season.getId()}">
-                            <input type="submit" value="X">
-                        </form>
-                    </li>
-                </ul>
+                <div>
+                    <p th:text="${'Active ' + series.getYearsRunStart() + '-' + series.getYearsRunEnd()}"></p>
+                    <a th:href="${series.getImdbUrl()}" th:text="${'Link to the IMDb page for ' + series.getName()}"></a>
+                </div>
+                <div>
+                    <ul th:if="${series.getMovies() != null}" class="actorList">
+                        <p>Movies: </p>
+                        <li th:each="movie : ${series.getMovies()}">
+                            <a th:href="${'/movies/update/' + movie.getId()}" th:text="${movie.getTitle()}"></a>
+                            <form method="POST" th:action="${'/series/removemovie/' + series.getId() + '/' + movie.getId()}">
+                                <input type="submit" value="X">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul th:if="${series.getTvSeasons() != null}" class="actorList">
+                        <p>TV Seasons: </p>
+                        <li th:each="season : ${series.getTvSeasons()}">
+                            <a th:href="${'/tv/update/' + season.getId()}" th:text="${season.getTitle()}"></a>
+                            <form method="POST" th:action="${'/series/removeseason/' + series.getId() + '/' + season.getId()}">
+                                <input type="submit" value="X">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <button type="button" class="formButton">Update Series</button>
+        <button type="button" class="formButton">Update Series</button>
 
-    <div class="formsToggle">
-        <form method="post" th:action="${'/series/update/' + series.getId()}">
-            <div>
-                <label for="name">Series Name</label>
-                <input type="text" name="name" id="name" th:value="${series.getName()}">
-            </div>
-            <div class="double">
-                <label for="yearsRunStart">Start of Series (Year)</label>
-                <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800" th:value="${series.getYearsRunStart()}">
+        <div class="formsToggle">
+            <form method="post" th:action="${'/series/update/' + series.getId()}">
+                <div>
+                    <label for="name">Series Name</label>
+                    <input type="text" name="name" id="name" th:value="${series.getName()}">
+                </div>
+                <div class="double">
+                    <label for="yearsRunStart">Start of Series (Year)</label>
+                    <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800" th:value="${series.getYearsRunStart()}">
 
-                <label for="yearsRunEnd">End of Series (Year)</label>
-                <input type="number" name="yearsRunEnd" id="yearsRunEnd" th:value="${series.getYearsRunEnd()}">
-            </div>
-            <div class="double">
-                <label for="movie">Movies in Series</label>
-                <select name="movie" id="movie">
-                    <option value="" selected hidden>Movies in Series</option>
-                    <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
-                </select>
+                    <label for="yearsRunEnd">End of Series (Year)</label>
+                    <input type="number" name="yearsRunEnd" id="yearsRunEnd" th:value="${series.getYearsRunEnd()}">
+                </div>
+                <div class="double">
+                    <label for="movie">Movies in Series</label>
+                    <select name="movie" id="movie">
+                        <option value="" selected hidden>Movies in Series</option>
+                        <option th:each="movie : ${movies}" th:value="${movie.getId()}" th:text="${movie.getTitle()}"></option>
+                    </select>
 
-                <label for="tvSeason">TV Seasons in Series</label>
-                <select name="tvSeason" id="tvSeason">
-                    <option value="" selected hidden>TV Seasons in Series</option>
-                    <option th:each="season : ${tvSeasons}" th:value="${season.getId()}" th:text="${season.getTitle()}"></option>
-                </select>
-            </div>
-            <div>
-                <label for="coverArt">Cover Art</label>
-                <input type="url" name="coverArt" id="coverArt" th:value="${series.getCoverArt()}">
-            </div>
-            <div>
-                <label for="imdbUrl">IMDb URL</label>
-                <input type="url" name="imdbUrl" id="imdbUrl" th:value="${series.getImdbUrl()}">
-            </div>
+                    <label for="tvSeason">TV Seasons in Series</label>
+                    <select name="tvSeason" id="tvSeason">
+                        <option value="" selected hidden>TV Seasons in Series</option>
+                        <option th:each="season : ${tvSeasons}" th:value="${season.getId()}" th:text="${season.getTitle()}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="coverArt">Cover Art</label>
+                    <input type="url" name="coverArt" id="coverArt" th:value="${series.getCoverArt()}">
+                </div>
+                <div>
+                    <label for="imdbUrl">IMDb URL</label>
+                    <input type="url" name="imdbUrl" id="imdbUrl" th:value="${series.getImdbUrl()}">
+                </div>
 
-            <input type="submit">
-        </form>
-    </div>
-
-
+                <input type="submit">
+            </form>
+        </div>
+    </main>
+    <div th:replace="~{common :: footer}"></div>
 </body>
-<div th:replace="~{common :: footer}"></div>
 
 </html>

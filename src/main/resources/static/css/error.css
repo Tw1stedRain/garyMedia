@@ -4,13 +4,7 @@ body{
   height: 100vh;
 }
 
-main{
-  width: 90%;
-  margin: 3% auto;
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto;
-}
+
 
 main > h1{
   background-color: rgba(112,84,64,0.7);

@@ -10,66 +10,68 @@
 
 <body>
     <div th:replace="~{common :: navbar}"></div>
-    <header>
-        <h1 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h1>
-        <form th:action="${'/movieActors/actor/' + actor.getId()}" th:method="delete" class="delete">
-            <button>Remove From Collection</button>
-        </form>
-    </header>
+    <main>
+        <header>
+            <h1 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h1>
+            <form th:action="${'/movieActors/actor/' + actor.getId()}" th:method="delete" class="delete">
+                <button>Remove From Collection</button>
+            </form>
+        </header>
 
-    <div class="details">
-        <img th:src="${actor.getImageUrl()}">
-        <div>
+        <div class="details">
+            <img th:src="${actor.getImageUrl()}">
             <div>
-                <p th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + '-' + actor.getActiveYearsEnd()}"></p>
-                <a th:href="${actor.getImdbUrl()}" th:text="${'Link to the IMDB page for ' + actor.getFirstName() + ' ' + actor.getLastName()}"></a>
-            </div>
-            <div th:if="${actor.isDead() == true}" class="dead">
-                <p th:text="${actor.getFirstName() + ' ' + actor.getLastName() + ' died in ' + actor.getYearDead()}"></p>
+                <div>
+                    <p th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + '-' + actor.getActiveYearsEnd()}"></p>
+                    <a th:href="${actor.getImdbUrl()}" th:text="${'Link to the IMDB page for ' + actor.getFirstName() + ' ' + actor.getLastName()}"></a>
+                </div>
+                <div th:if="${actor.isDead() == true}" class="dead">
+                    <p th:text="${actor.getFirstName() + ' ' + actor.getLastName() + ' died in ' + actor.getYearDead()}"></p>
+                </div>
             </div>
         </div>
-    </div>
-    <button type="button" class="formButton">Update Actor</button>
+        <button type="button" class="formButton">Update Actor</button>
 
-    <div class="formsToggle">
-        <form method="post" th:action="${'/actors/update/' + actor.getId()}">
+        <div class="formsToggle">
+            <form method="post" th:action="${'/actors/update/' + actor.getId()}">
 
-            <div>
-                <label for="imageUrl">Image URL</label>
-                <input type="url" name="imageUrl" id="imageUrl" th:value="${actor.getImageUrl()}">
-            </div>
-            <div class="double">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" th:value="${actor.getFirstName()}">
-
-                <label for="activeYearsStart">Year Started</label>
-                <input type="number" name="activeYearsStart" id="activeYearsStart" th:value="${actor.getActiveYearsStart()}">
-            </div>
-            <div class="double">
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" th:value="${actor.getLastName()}">
-
-                <label for="activeYearsEnd">Year Ended</label>
-                <input type="number" name="activeYearsEnd" id="activeYearsEnd" th:value="${actor.getActiveYearsEnd()}">
-            </div>
-            <div class="double">
-                <label for="imdbUrl">IMDB URL</label>
-                <input type="url" name="imdbUrl" id="imdbUrl" th:value="${actor.getImdbUrl()}">
-
-                <label for="dead">Actor Decesed</label>
-                <p>Yes</p>
-                <input class="radioLoaned" name="dead" type="radio" value="true" id="dead">
-                <div class="reveal-if-active">
-                    <input name="yearDead" id="yearDead" placeholder="Year Actor Died">
+                <div>
+                    <label for="imageUrl">Image URL</label>
+                    <input type="url" name="imageUrl" id="imageUrl" th:value="${actor.getImageUrl()}">
                 </div>
-                <p>No</p>
-                <input class="radioLoaned" name="dead" type="radio" value="false">
-            </div>
-            <input type="submit">
-        </form>
-    </div>
+                <div class="double">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" id="firstName" th:value="${actor.getFirstName()}">
 
+                    <label for="activeYearsStart">Year Started</label>
+                    <input type="number" name="activeYearsStart" id="activeYearsStart" th:value="${actor.getActiveYearsStart()}">
+                </div>
+                <div class="double">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" th:value="${actor.getLastName()}">
+
+                    <label for="activeYearsEnd">Year Ended</label>
+                    <input type="number" name="activeYearsEnd" id="activeYearsEnd" th:value="${actor.getActiveYearsEnd()}">
+                </div>
+                <div class="double">
+                    <label for="imdbUrl">IMDB URL</label>
+                    <input type="url" name="imdbUrl" id="imdbUrl" th:value="${actor.getImdbUrl()}">
+
+                    <label for="dead">Actor Decesed</label>
+                    <p>Yes</p>
+                    <input class="radioLoaned" name="dead" type="radio" value="true" id="dead">
+                    <div class="reveal-if-active">
+                        <input name="yearDead" id="yearDead" placeholder="Year Actor Died">
+                    </div>
+                    <p>No</p>
+                    <input class="radioLoaned" name="dead" type="radio" value="false">
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+    </main>
+
+    <div th:replace="~{common :: footer}"></div>
 </body>
-<div th:replace="~{common :: footer}"></div>
 
 </html>

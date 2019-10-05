@@ -1,15 +1,31 @@
+@media(max-width: 400px){
+ 
+}
+
 html{
  background-image: url("https://images.unsplash.com/photo-1432139523732-e9d8af332501?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
  background-repeat: no-repeat;
+ background-attachment: fixed;
  background-size: cover;
 }
 
 body{
-width: 90%;
-margin: auto;
+  width: 90%;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* nav styling */
+main{
+  width: 90%;
+  margin: 3% auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+/* ************** nav styling **************** */
 nav{
   background-color: rgb(70, 73, 81, 0.8);
   margin: 5px 0 5px 0;
@@ -44,7 +60,7 @@ h1{
   margin-bottom: 12px;
 }
 
-/* forms */
+/* ************* forms ************* */
 .formButton{
   background-color: rgb(70,73,81, 0.8);
   font-size: 1.5rem;
@@ -154,14 +170,14 @@ footer{
   justify-content: space-evenly;
   align-items: center;
   flex-shrink: 0;
-  
-  }
+}
 
 footer > p{
   font-size: 1.3rem;
   color: rgba(192,191,190);
   text-decoration: none;
 }
+
 footer > div{
   display: flex;
   flex-direction: row;
@@ -175,7 +191,7 @@ footer > div > a {
   margin-right: 20%;
 }
 
-/* scrollbar */
+/* ********** scrollbar ************ */
 
 /* width */
 ::-webkit-scrollbar {

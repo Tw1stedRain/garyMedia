@@ -10,47 +10,49 @@
 
 <body>
     <div th:replace="~{common :: navbar}"></div>
-    <header>
-        <h1>Your Series Collection</h1>
-    </header>
+    <main>
+        <header>
+            <h1>Your Series Collection</h1>
+        </header>
 
-    <button type="button" class="formButton">Add a New Series to Your Collection</button>
+        <button type="button" class="formButton">Add a New Series to Your Collection</button>
 
-    <div class="formsToggle">
+        <div class="formsToggle">
 
-        <form method="post" action="/series/newseries">
-            <div>
-                <label for="name">Series Name</label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div class="double">
-                <label for="yearsRunStart">Start of Series (Year)</label>
-                <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800">
+            <form method="post" action="/series/newseries">
+                <div>
+                    <label for="name">Series Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="double">
+                    <label for="yearsRunStart">Start of Series (Year)</label>
+                    <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800">
 
-                <label for="yearsRunEnd">End of Series (Year)</label>
-                <input type="number" name="yearsRunEnd" id="yearsRunEnd">
-            </div>
-            <div>
-                <label for="coverArt">Cover Art</label>
-                <input type="url" name="coverArt" id="coverArt">
-            </div>
-            <div>
-                <label for="imdbUrl">IMDb URL</label>
-                <input type="url" name="imdbUrl" id="imdbUrl">
-            </div>
-            <input type="submit">
-        </form>
-    </div>
+                    <label for="yearsRunEnd">End of Series (Year)</label>
+                    <input type="number" name="yearsRunEnd" id="yearsRunEnd">
+                </div>
+                <div>
+                    <label for="coverArt">Cover Art</label>
+                    <input type="url" name="coverArt" id="coverArt">
+                </div>
+                <div>
+                    <label for="imdbUrl">IMDb URL</label>
+                    <input type="url" name="imdbUrl" id="imdbUrl">
+                </div>
+                <input type="submit">
+            </form>
+        </div>
 
-    <ul class="collectionList">
-        <li th:each="series : ${series}" class="movieItems">
-            <h3 th:text="${series.getName()}"></h3>
-            <img th:src="${series.getCoverArt()}">
-            <a th:href="${'/series/update/' + series.getId()}">Further Detail</a>
-        </li>
-    </ul>
+        <ul class="collectionList">
+            <li th:each="series : ${series}" class="movieItems">
+                <h3 th:text="${series.getName()}"></h3>
+                <img th:src="${series.getCoverArt()}">
+                <a th:href="${'/series/update/' + series.getId()}">Further Detail</a>
+            </li>
+        </ul>
+    </main>
+    <div th:replace="~{common :: footer}"></div>
 
 </body>
-<div th:replace="~{common :: footer}"></div>
 
 </html>
