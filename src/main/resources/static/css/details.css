@@ -86,6 +86,16 @@
 }
 
 @media (max-width: 450px) {
+  .delete{
+    width: 45%;
+
+  }
+  
+  .delete button{
+    font-size: .8rem;
+    margin-left: 12%;
+  }
+  
   .iAmLoaned > h2{
     font-size: 1.3rem;
     padding: 2%; 
