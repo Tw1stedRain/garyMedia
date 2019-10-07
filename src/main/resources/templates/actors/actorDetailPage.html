@@ -57,11 +57,11 @@
                     <label for="imdbUrl">IMDB URL</label>
                     <input type="url" name="imdbUrl" id="imdbUrl" th:value="${actor.getImdbUrl()}">
 
-                    <label for="dead">Actor Decesed</label>
+                    <label for="dead">Actor Deceased</label>
                     <p>Yes</p>
                     <input class="radioLoaned" name="dead" type="radio" value="true" id="dead">
                     <div class="reveal-if-active">
-                        <input name="yearDead" id="yearDead" placeholder="Year Actor Died">
+                        <input name="yearDead" id="yearDead" type="number" placeholder="Year Actor Died">
                     </div>
                     <p>No</p>
                     <input class="radioLoaned" name="dead" type="radio" value="false">

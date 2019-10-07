@@ -42,3 +42,24 @@
   font-size: 1.5rem;
   text-decoration: none;
 }
+
+@media (max-width: 450px) {
+  .movieItems{
+    height: 30%;
+    width: 30%
+  }
+
+  .movieItems > h3{
+    font-size: 1rem;
+  }
+
+  .movieItems > img{
+    height: 70%;
+    width: 75%;
+  }
+
+  .movieItems > a{
+    font-size: 1rem;
+  }
+
+}
