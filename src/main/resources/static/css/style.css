@@ -234,32 +234,38 @@ footer > div > a {
  }
 
  form > div{
-   justify-content: space-between;
+   display: flex;
+   flex-direction: column;
  }
 
   form > div > label{
-    width: 10%;
     font-size: 1rem;
+    margin: 1% 0;
+    width: 100%;
+    text-align: start;
   }
 
   form > div > input{
-    width: 83%;
+    width: 95%;
     height: 3vh;
   }
 
   .double > label{
-    width: 10%;
     font-size: 1rem;
+    margin: 1% 0;
+    width: 100%;
+    text-align: start;
   }
 
   .double > input{
-    width: 30%;
+    width: 95%;
     height: 3vh;
   }
 
   form select{
     font-size: .8rem;
     border: .5px solid black;
+    width: 96%;
   }
 
   .double p{
@@ -276,6 +282,6 @@ footer > div > a {
 
   input[type="radio"]:checked ~ .reveal-if-active input{
     height: 1em;
-    width: 100%;
+    width: 300%;
   }
 }
