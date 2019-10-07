@@ -206,16 +206,18 @@ footer > div > a {
 }
 
 @media (max-width: 450px) {
- nav ul{
+
+  nav ul{
    flex-wrap: wrap;
- }
+   height: 16vh;
+  }
  
  nav li{
-  margin: 2%;
+   margin: 2%;
  }
 
   nav a{
-   font-size: 2rem;
+   font-size: 1.3rem;
  }
 
  main{

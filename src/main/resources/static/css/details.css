@@ -84,3 +84,43 @@
 .dead p{
   color: rgb(84, 127, 169);
 }
+
+@media (max-width: 450px) {
+  .iAmLoaned > h2{
+    font-size: 1.3rem;
+    padding: 2%; 
+  }
+
+  .details > div{
+    height: 32.5vh;
+    overflow: scroll;
+    padding: 3%;
+  }
+
+  .details > div :last-child{
+    margin-top: 5%; 
+  }
+
+  .details img{
+    height: 40%;
+    width: 40%;
+    margin-right: 3%; 
+  }
+
+  .details p, a{
+    font-size: 1.2rem;
+  }
+
+  .actorList form{
+    width: 20%;
+  }
+
+  .actorList form input{
+    padding: .5%;
+    font-size: .5rem;
+  }
+
+  .dead{
+    padding: 5%;
+  }
+}
