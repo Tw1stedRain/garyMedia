@@ -218,6 +218,14 @@ footer > div > a {
    font-size: 2rem;
  }
 
+ main{
+   width: 100%;
+ }
+
+ form{
+   width: 95%;
+ }
+
  form > div{
    justify-content: space-between;
  }
@@ -244,14 +252,15 @@ footer > div > a {
 
   form select{
     font-size: .8rem;
+    border: .5px solid black;
   }
 
   .double p{
-    font-size: .8rem;
+    font-size: 1rem;
   }
 
   .double .radioLoaned{
-    width: 2%;
+    width: 3%;
   }
 
   .reveal-if-active{
