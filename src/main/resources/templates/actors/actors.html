@@ -19,7 +19,6 @@
         <button type="button" class="formButton">Add a New Actor to Your Collection</button>
 
         <div class="formsToggle">
-            <!-- TODO: fix name inputs -->
             <form method="post" action="/actors/newactor">
                 <div>
                     <label for="imageUrl">Image URL</label>
@@ -46,6 +45,14 @@
                 <input type="submit">
             </form>
         </div>
+
+        <form class="sortList">
+            <select onchange="window.location.href=this.value">
+                <option value="" selected hidden>Sort by</option>
+                <option value="allactors?sort=firstname">First Name</option>
+                <option value="allactors?sort=lastname">Last Name</option>
+            </select>
+        </form>
 
         <ul class="collectionList">
             <li th:each="actor : ${actors}" class="movieItems">

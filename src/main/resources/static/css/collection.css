@@ -43,6 +43,18 @@
   text-decoration: none;
 }
 
+.sortList{
+  width: 20%;
+}
+
+.sortList select{
+  width: 100%;
+  background-color: rgba(146, 116, 83, 0.8);
+  color: rgba(223, 221, 219);
+}
+
+
+
 @media (max-width: 450px) {
   .movieItems{
     height: 40%;

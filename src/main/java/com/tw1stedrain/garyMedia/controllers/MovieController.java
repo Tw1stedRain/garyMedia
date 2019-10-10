@@ -26,12 +26,24 @@ public class MovieController {
     ActorRepo actorRepo;
 
     @GetMapping("/allmovies")
-    public String allMovies(Model model){
+    public String allMovies(
+            Model model,
+            @RequestParam(required = false, defaultValue = "title") String sort
+    ) {
         List<Movie> movies = movieRepo.findAll();
+        if (sort.equals("title")){
+           movies = movieRepo.findAllByOrderByTitle();
+        } else if (sort.equals("duration")){
+            movies = movieRepo.findAllByOrderByDurationInMinutes();
+        } else if (sort.equals("genre")){
+            movies = movieRepo.findAllByOrderByGenre();
+        } else if (sort.equals("rating")) {
+            movies = movieRepo.findAllByOrderByRating();
+        }
+
         model.addAttribute("movies", movies);
         return "movies/movies";
     }
-    // TODO: get all movies to sort (sorted by rating, duration, actor) - may have to be done with a little JS
 
     @GetMapping("/moviedetail/{id}")
     public String thisMovie(

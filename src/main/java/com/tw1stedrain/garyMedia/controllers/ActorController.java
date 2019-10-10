@@ -20,8 +20,17 @@ public class ActorController {
     ActorRepo actorRepo;
 
     @GetMapping("/allactors")
-    public String allActors(Model model){
+    public String allActors(
+            Model model,
+            @RequestParam(required = false, defaultValue = "lastname") String sort
+            ){
         List<Actor> actors = actorRepo.findAll();
+        if (sort.equals("firstname")){
+            actors = actorRepo.findAllByOrderByFirstName();
+        } else if (sort.equals("lastname")){
+            actors = actorRepo.findAllByOrderByLastName();
+        }
+
         model.addAttribute("actors", actors);
         return "actors/actors";
     }

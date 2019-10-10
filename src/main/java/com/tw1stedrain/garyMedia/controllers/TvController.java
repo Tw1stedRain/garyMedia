@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 @Controller
 @RequestMapping("/tv")
@@ -23,13 +23,24 @@ public class TvController {
     ActorRepo actorRepo;
 
     @GetMapping("/allTv")
-    public String allTv(Model model){
+    public String allTv(
+            Model model,
+            @RequestParam(required = false, defaultValue = "title") String sort
+            ){
         List<TvSeason> tvSeasons = tvRepo.findAll();
+        if (sort.equals("title")){
+            tvSeasons = tvRepo.findAllByOrderByTitle();
+        } else if (sort.equals("episodes")){
+            tvSeasons = tvRepo.findAllByOrderByNumOfEpisodes();
+        } else if (sort.equals("genre")){
+            tvSeasons = tvRepo.findAllByOrderByGenre();
+        } else if (sort.equals("rating")){
+            tvSeasons = tvRepo.findAllByOrderByRating();
+        }
+
         model.addAttribute("seasons", tvSeasons);
         return "tvSeasons/seasons";
     }
-
-    // TODO: get all tv seasons route (sorted by rating, duration, actor)
 
     @GetMapping("/seasonDetail/{id}")
     public String thisSeason(
@@ -38,7 +49,6 @@ public class TvController {
         return "tvSeasons/seasonDetailPage";
     }
 
-    // TODO: create a new tv season
     @PostMapping("/newSeason")
     public RedirectView createSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String imdbLink, double rottenTomatoes){
 
@@ -47,7 +57,6 @@ public class TvController {
         return new RedirectView("/tv/allTv");
     }
 
-    // TODO: this is where you get to add series connections (when theyre setup)
     @GetMapping("/update/{id}")
     public String updateTvSeasonRoute(
             @PathVariable Long id,
