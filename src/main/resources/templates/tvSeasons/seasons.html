@@ -67,11 +67,18 @@
             </form>
         </div>
 
-        <!--TODO: Create a way for the user to sort the seasons-->
+        <form class="sortList">
+            <select onchange="window.location.href=this.value">
+                <option value="" selected hidden>Sort by</option>
+                <option value="allTv?sort=title">Title</option>
+                <option value="allTv?sort=episodes">Number of Episodes</option>
+                <option value="allTv?sort=genre">Genre</option>
+                <option value="allTv?sort=rating">TVCR Rating</option>
+            </select>
+        </form>
 
         <ul class="collectionList">
             <li th:each="season : ${seasons}" class="movieItems">
-                <!--TODO: fill with basic info about the season-->
                 <h3 th:text="${season.getTitle()}"></h3>
                 <img th:src="${season.getCoverArt()}">
                 <a th:href="${'/tv/update/' + season.getId()}">Further Detail</a>

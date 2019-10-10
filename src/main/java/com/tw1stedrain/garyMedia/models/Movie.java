@@ -25,7 +25,6 @@ public class Movie {
     private boolean loaned = false;
     private String loanedTo;
 
-    //TODO: implement movieActors
     @ManyToMany
     @JoinTable(
             name = "movie_actors",
@@ -34,7 +33,6 @@ public class Movie {
     )
     private Set<Actor> movieActors;
 
-    // TODO: many to one series
 
     // **************************************************
     // Constructors

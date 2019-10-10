@@ -43,6 +43,10 @@
   text-decoration: none;
 }
 
+.sortList{
+
+}
+
 @media (max-width: 450px) {
   .movieItems{
     height: 40%;
