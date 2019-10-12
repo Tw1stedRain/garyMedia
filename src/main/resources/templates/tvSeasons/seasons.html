@@ -79,9 +79,12 @@
 
         <ul class="collectionList">
             <li th:each="season : ${seasons}" class="movieItems">
-                <h3 th:text="${season.getTitle()}"></h3>
-                <img th:src="${season.getCoverArt()}">
-                <a th:href="${'/tv/update/' + season.getId()}">Further Detail</a>
+                <a th:href="${'/tv/update/' + season.getId()}">
+                    <div>
+                        <h3 th:text="${season.getTitle()}"></h3>
+                        <img th:src="${season.getCoverArt()}">
+                    </div>
+                </a>
             </li>
         </ul>
     </main>

@@ -56,9 +56,13 @@
 
         <ul class="collectionList">
             <li th:each="actor : ${actors}" class="movieItems">
-                <h3 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h3>
-                <img th:src="${actor.getImageUrl()}">
-                <a th:href="${'/actors/update/' + actor.getId()}">Further Detail</a>
+                <a th:href="${'/actors/update/' + actor.getId()}">
+                    <div>
+                        <h3 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h3>
+                        <img th:src="${actor.getImageUrl()}">
+
+                    </div>
+                </a>
             </li>
         </ul>
     </main>
