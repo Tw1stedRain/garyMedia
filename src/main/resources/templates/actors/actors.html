@@ -22,21 +22,21 @@
             <form method="post" action="/actors/newactor">
                 <div>
                     <label for="imageUrl">Image URL</label>
-                    <input type="url" name="imageUrl" id="imageUrl">
+                    <input type="url" name="imageUrl" id="imageUrl" value="https://placekitten.com/380/268">
                 </div>
                 <div class="double">
                     <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="firstName">
+                    <input type="text" name="firstName" id="firstName" required>
 
                     <label for="activeYearsStart">Year Started</label>
-                    <input type="number" name="activeYearsStart" id="activeYearsStart" min="1800">
+                    <input type="number" name="activeYearsStart" id="activeYearsStart" min="0" value="0">
                 </div>
                 <div class="double">
                     <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="lastName">
+                    <input type="text" name="lastName" id="lastName" required>
 
                     <label for="activeYearsEnd">Year Ended</label>
-                    <input type="number" name="activeYearsEnd" id="activeYearsEnd" min="1800">
+                    <input type="number" name="activeYearsEnd" id="activeYearsEnd" min="0" value="0">
                 </div>
                 <div>
                     <label for="imdbUrl">IMDB URL</label>

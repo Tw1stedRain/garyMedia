@@ -1,8 +1,11 @@
 package com.tw1stedrain.garyMedia.models;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 public class Actor {
@@ -13,13 +16,17 @@ public class Actor {
 
     private String firstName;
     private String lastName;
+    @Nullable
     private int activeYearsStart;
+    @Nullable
     private int activeYearsEnd;
 
     @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
+    @Nullable
     private String imdbUrl;
+    @Nullable
     private boolean dead = false;
     private int yearDead;
 
@@ -28,8 +35,6 @@ public class Actor {
 
     @ManyToMany(mappedBy = "tvActors")
     private List<TvSeason> tvSeasons;
-
-    //TODO: implement many to many to the show/movie
 
     // **************************************************
     // Constructors

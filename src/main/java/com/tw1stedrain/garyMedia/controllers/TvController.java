@@ -49,6 +49,7 @@ public class TvController {
         return "tvSeasons/seasonDetailPage";
     }
 
+    //TODO: make all form fields  other than title optional
     @PostMapping("/newSeason")
     public RedirectView createSeason(String title, String coverArt, int numOfEpisodes, String genre, String rating, int releaseDate, String imdbLink, double rottenTomatoes){
 
