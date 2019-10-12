@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <div th:replace="~{common :: styling}"></div>
-  <!-- <link th:href="@{/css/error.css}" rel="stylesheet" type="text/css"> -->
   <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
 
   <title>Media Collection</title>
@@ -14,8 +13,7 @@
 <body>
   <div th:replace="~{common :: navbar}"></div>
   <main>
-    <!-- TODO: give page content to represent a splash page -->
-    <h1>Welcome to Gary's Media Collection</h1>
+    <h1 class="splashHeader">Welcome to Gary's Media Collection</h1>
 
     <ul class="collectionList">
       <li class="movieItems splash">
