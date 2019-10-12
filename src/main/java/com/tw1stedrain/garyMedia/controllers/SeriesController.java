@@ -46,6 +46,7 @@ public class SeriesController {
         return "series/seriesDetailPage";
     }
 
+    //TODO: make all form fields  other than name optional
     @PostMapping("/newseries")
     public RedirectView createSeries(String name, int yearsRunStart, int yearsRunEnd, String coverArt, String imdbUrl){
         Series newSeries = new Series(name, yearsRunStart, yearsRunEnd, coverArt, imdbUrl);

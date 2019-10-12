@@ -1,5 +1,8 @@
 package com.tw1stedrain.garyMedia.models;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,12 +18,19 @@ public class Movie {
     @Column(columnDefinition="TEXT")
     private String coverArt;  // form set to take in URL
 
+    @Nullable
     private int durationInMinutes;
+    @Nullable
     private int releaseDate;
+    @Nullable
     private String dvdOrBluRay;
+    @Nullable
     private String genre;
+    @Nullable
     private String rating;
+    @Nullable
     private String imdbLink; // form set to take in URL
+    @Nullable
     private double rottenTomatoes;
     private boolean loaned = false;
     private String loanedTo;

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 @Controller
 @RequestMapping("/movies")
@@ -52,7 +52,7 @@ public class MovieController {
         return "movies/movieDetailPage";
     }
 
-
+    //TODO: make all form fields  other than title optional
     @PostMapping("/newmovie")
     public RedirectView createMovie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
 
@@ -74,7 +74,6 @@ public class MovieController {
         return "movies/movieDetailPage";
     }
 
-    // TODO: this is where you get to add series and actor connections (when theyre setup)
     @PostMapping("/update/{id}")
     public RedirectView updateMovie(
             @PathVariable Long id,

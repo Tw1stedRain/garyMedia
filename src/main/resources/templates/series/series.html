@@ -22,18 +22,18 @@
             <form method="post" action="/series/newseries">
                 <div>
                     <label for="name">Series Name</label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" name="name" id="name" required>
                 </div>
                 <div class="double">
                     <label for="yearsRunStart">Start of Series (Year)</label>
-                    <input type="number" name="yearsRunStart" id="yearsRunStart" min="1800">
+                    <input type="number" name="yearsRunStart" id="yearsRunStart" min="0" value="0">
 
                     <label for="yearsRunEnd">End of Series (Year)</label>
-                    <input type="number" name="yearsRunEnd" id="yearsRunEnd">
+                    <input type="number" name="yearsRunEnd" id="yearsRunEnd" min="0" value="0">
                 </div>
                 <div>
                     <label for="coverArt">Cover Art</label>
-                    <input type="url" name="coverArt" id="coverArt">
+                    <input type="url" name="coverArt" id="coverArt" value="https://placekitten.com/380/268">
                 </div>
                 <div>
                     <label for="imdbUrl">IMDb URL</label>
@@ -52,9 +52,12 @@
 
         <ul class="collectionList">
             <li th:each="series : ${series}" class="movieItems">
-                <h3 th:text="${series.getName()}"></h3>
-                <img th:src="${series.getCoverArt()}">
-                <a th:href="${'/series/update/' + series.getId()}">Further Detail</a>
+                <a th:href="${'/series/update/' + series.getId()}">
+                    <div>
+                        <h3 th:text="${series.getName()}"></h3>
+                        <img th:src="${series.getCoverArt()}">
+                    </div>
+                </a>
             </li>
         </ul>
     </main>

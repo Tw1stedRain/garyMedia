@@ -11,7 +11,7 @@
 .movieItems{
   background-color: rgba(146,116,83,0.7);
   border: 3px solid rgba(146, 116, 83);
-  height: 250px;
+  height: 210px;
   width: 20%;
   padding: 1%;
   margin: 1%;
@@ -21,25 +21,29 @@
   box-shadow: 19px 30px 48px -34px rgba(51,48,51,0.68);
 }
 
-.movieItems > h3{
+.movieItems div{
+  height: 100%;
+  width: 100%;
+}
+
+.movieItems > a > div > h3{
   color: rgba(192,191,190);
+  text-decoration: none;
   font-size: 1.5rem;
   text-align: center;
   width: 90%;
   height: 20%;
-  margin: 0 2% 0 2%;
+  margin: 0 2% 5% 2%;
   overflow: hidden;
 }
 
-.movieItems > img{
+.movieItems > a > div > img{
   height: 160px;
   width: 120px;
   margin-bottom: 6%;
 }
 
 .movieItems > a{
-  color: rgba(192,191,190);
-  font-size: 1.5rem;
   text-decoration: none;
 }
 

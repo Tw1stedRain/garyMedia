@@ -1,7 +1,9 @@
 package com.tw1stedrain.garyMedia.models;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,12 +14,15 @@ public class Series {
     private long id;
 
     private String name;
+    @Nullable
     private int yearsRunStart;
+    @Nullable
     private int yearsRunEnd;
 
     @Column(columnDefinition = "TEXT")
     private String coverArt;
 
+    @Nullable
     private String imdbUrl;
 
     @OneToMany

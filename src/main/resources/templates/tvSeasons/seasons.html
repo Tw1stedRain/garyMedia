@@ -22,18 +22,18 @@
             <form method="post" action="/tv/newSeason">
                 <div>
                     <label for="title">Title</label>
-                    <input id="title" name="title">
+                    <input id="title" name="title" required>
                 </div>
                 <div>
                     <label for="coverArt">Cover Art</label>
-                    <input id="coverArt" name="coverArt" type="url">
+                    <input id="coverArt" name="coverArt" type="url" value="https://placekitten.com/380/268">
                 </div>
                 <div class="double">
                     <label for="numOfEpisodes">Number of Episodes</label>
-                    <input id="numOfEpisodes" name="numOfEpisodes" type="number" min="1">
+                    <input id="numOfEpisodes" name="numOfEpisodes" type="number" min="1" value="1">
 
                     <label for="releaseDate">Realease Year</label>
-                    <input id="releaseDate" name="releaseDate" type="number" min="1800" max="3000">
+                    <input id="releaseDate" name="releaseDate" type="number" min="0" max="3000" value="0">
                 </div>
                 <div class="double">
                     <label for="dvdOrBluRay">DvD or BluRay</label>
@@ -56,7 +56,7 @@
                     </select>
 
                     <label for="rottenTomatoes">Rotten Tomatoes Score</label>
-                    <input id="rottenTomatoes" name="rottenTomatoes" type="number" step="0.01" min="0" max="1">
+                    <input id="rottenTomatoes" name="rottenTomatoes" type="number" step="0.01" min="0" max="1" value="0">
                 </div>
                 <div>
                     <label for="imdbLink">IMDB URL</label>
@@ -79,9 +79,12 @@
 
         <ul class="collectionList">
             <li th:each="season : ${seasons}" class="movieItems">
-                <h3 th:text="${season.getTitle()}"></h3>
-                <img th:src="${season.getCoverArt()}">
-                <a th:href="${'/tv/update/' + season.getId()}">Further Detail</a>
+                <a th:href="${'/tv/update/' + season.getId()}">
+                    <div>
+                        <h3 th:text="${season.getTitle()}"></h3>
+                        <img th:src="${season.getCoverArt()}">
+                    </div>
+                </a>
             </li>
         </ul>
     </main>

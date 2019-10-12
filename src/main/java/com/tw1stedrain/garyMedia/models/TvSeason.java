@@ -1,7 +1,10 @@
 package com.tw1stedrain.garyMedia.models;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
-import java.util.List;
+
 import java.util.Set;
 
 @Entity
@@ -16,12 +19,19 @@ public class TvSeason {
     @Column(columnDefinition = "TEXT")
     private String coverArt;
 
+    @Nullable
     private int numOfEpisodes;
+    @Nullable
     private String genre;
+    @Nullable
     private String rating;
+    @Nullable
     private String dvdOrBluRay;
+    @Nullable
     private int releaseDate;
+    @Nullable
     private String imdbLink;
+    @Nullable
     private double rottenTomatoes;
     private boolean loaned = false;
     private String loanedTo;
@@ -33,8 +43,6 @@ public class TvSeason {
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
     private Set<Actor> tvActors;
-
-    // TODO: many to one series
 
     // **************************************************
     // Constructors
