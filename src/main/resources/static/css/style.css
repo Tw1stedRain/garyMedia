@@ -21,6 +21,13 @@ main{
   flex: 1 0 auto;
 }
 
+.splashHeader{
+  background-color: rgba(112,84,64,0.7);
+  text-align: center;
+  padding: 1%;
+  color: rgb(226, 229, 230);
+}
+
 /* ************** nav styling **************** */
 nav{
   background-color: rgb(70, 73, 81, 0.8);

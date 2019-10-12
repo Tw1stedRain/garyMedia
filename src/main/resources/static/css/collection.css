@@ -47,6 +47,16 @@
   text-decoration: none;
 }
 
+.splash{
+  width: 30%;
+  height: 210px;
+  margin: 0 8%;
+}
+
+.splash > a > div > img{
+  width: 60%;
+  margin: 0px 17%;}
+
 .sortList{
   width: 20%;
 }
