@@ -42,7 +42,6 @@ public class ActorController {
         return "actors/actorDetailPage";
     }
 
-    //TODO: make all form fields  other than first and last name optional
     @PostMapping("/newactor")
     public RedirectView createActor(String firstName, String lastName, int activeYearsStart, int activeYearsEnd, String imageUrl, String imdbUrl){
         Actor actor = new Actor(firstName, lastName, activeYearsStart, activeYearsEnd, imageUrl, imdbUrl);

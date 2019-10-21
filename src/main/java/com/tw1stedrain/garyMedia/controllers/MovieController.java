@@ -52,7 +52,6 @@ public class MovieController {
         return "movies/movieDetailPage";
     }
 
-    //TODO: make all form fields  other than title optional
     @PostMapping("/newmovie")
     public RedirectView createMovie(String title, String coverArt, int duration, int releaseDate, String dvdOrBluRay, String genre, String rating, String imdb, double tomatoes){
 
