@@ -21,7 +21,8 @@
             <img th:src="${series.getCoverArt()}">
             <div>
                 <div>
-                    <p th:text="${'Active ' + series.getYearsRunStart() + '-' + series.getYearsRunEnd()}"></p>
+                    <p th:if="${series.getYearsRunEnd() == 0}" th:text="${'Active ' + series.getYearsRunStart() + ' - Present'}"></p>
+                    <p th:unless="${series.getYearsRunEnd() == 0}" th:text="${'Active ' + series.getYearsRunStart() + ' - ' + series.getYearsRunEnd()}"></p>
                     <a th:href="${series.getImdbUrl()}" th:text="${'Link to the IMDb page for ' + series.getName()}"></a>
                 </div>
                 <div>

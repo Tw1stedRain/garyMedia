@@ -22,7 +22,8 @@
             <img th:src="${actor.getImageUrl()}">
             <div>
                 <div>
-                    <p th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + '-' + actor.getActiveYearsEnd()}"></p>
+                    <p th:if="${actor.getActiveYearsEnd() == 0}" th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + ' - Present'}"></p>
+                    <p th:unless="${actor.getActiveYearsEnd() == 0}" th:text="${actor.getFirstName() + '''s active years: ' + actor.getActiveYearsStart() + ' - ' + actor.getActiveYearsEnd()}"></p>
                     <a th:href="${actor.getImdbUrl()}" th:text="${'Link to the IMDB page for ' + actor.getFirstName() + ' ' + actor.getLastName()}"></a>
                 </div>
                 <div th:if="${actor.isDead() == true}" class="dead">
