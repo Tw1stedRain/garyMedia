@@ -60,6 +60,8 @@ public class ActorController {
         return "actors/actorDetailPage";
     }
 
+
+
     @PostMapping("/update/{id}")
     public RedirectView updateActor(
             @PathVariable long id,
