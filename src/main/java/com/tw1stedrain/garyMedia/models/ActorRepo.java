@@ -10,4 +10,6 @@ public interface ActorRepo extends JpaRepository<Actor, Long> {
     List<Actor> findAllByOrderByFirstName();
 
     List<Actor> findAllByOrderByLastName();
+
+    List<Actor> findByLastNameIgnoreCase(String keyword);
 }

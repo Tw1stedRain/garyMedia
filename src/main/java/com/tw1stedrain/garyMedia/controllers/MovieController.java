@@ -28,22 +28,33 @@ public class MovieController {
     @GetMapping("/allmovies")
     public String allMovies(
             Model model,
-            @RequestParam(required = false, defaultValue = "title") String sort
+            @RequestParam(required = false, defaultValue = "title") String sort,
+            @RequestParam(required = false) String keyword
     ) {
         List<Movie> movies = movieRepo.findAll();
-        if (sort.equals("title")){
-           movies = movieRepo.findAllByOrderByTitle();
-        } else if (sort.equals("duration")){
-            movies = movieRepo.findAllByOrderByDurationInMinutes();
-        } else if (sort.equals("genre")){
-            movies = movieRepo.findAllByOrderByGenre();
-        } else if (sort.equals("rating")) {
-            movies = movieRepo.findAllByOrderByRating();
+        switch (sort) {
+            case "title":
+                if (keyword != null) {
+                    movies = movieRepo.findByTitleContains(keyword);
+                } else {
+                    movies = movieRepo.findAllByOrderByTitle();
+                }
+                break;
+            case "duration":
+                movies = movieRepo.findAllByOrderByDurationInMinutes();
+                break;
+            case "genre":
+                movies = movieRepo.findAllByOrderByGenre();
+                break;
+            case "rating":
+                movies = movieRepo.findAllByOrderByRating();
+                break;
         }
 
         model.addAttribute("movies", movies);
         return "movies/movies";
     }
+
 
     @GetMapping("/moviedetail/{id}")
     public String thisMovie(

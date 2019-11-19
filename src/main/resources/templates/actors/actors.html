@@ -2,71 +2,73 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <div th:replace="~{common :: styling}"></div>
-    <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
-    <title>All Actors</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <div th:replace="~{common :: styling}"></div>
+  <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
+  <title>All Actors</title>
 </head>
 
 <body>
-    <div th:replace="~{common :: navbar}"></div>
-    <main>
-        <header>
-            <h1>Actor Collection</h1>
-        </header>
+  <div th:replace="~{common :: navbar}"></div>
+  <main>
+    <header>
+      <h1>Actor Collection</h1>
+    </header>
 
-        <button type="button" class="formButton">Add a New Actor to Your Collection</button>
+    <button type="button" class="formButton">Add a New Actor to Your Collection</button>
 
-        <div class="formsToggle">
-            <form method="post" action="/actors/newactor">
-                <div>
-                    <label for="imageUrl">Image URL</label>
-                    <input type="url" name="imageUrl" id="imageUrl" value="https://placekitten.com/380/268">
-                </div>
-                <div class="double">
-                    <label for="firstName">First Name</label>
-                    <input type="text" name="firstName" id="firstName" required>
-
-                    <label for="activeYearsStart">Year Started</label>
-                    <input type="number" name="activeYearsStart" id="activeYearsStart" min="0" value="0">
-                </div>
-                <div class="double">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" name="lastName" id="lastName" required>
-
-                    <label for="activeYearsEnd">Year Ended</label>
-                    <input type="number" name="activeYearsEnd" id="activeYearsEnd" min="0" value="0">
-                </div>
-                <div>
-                    <label for="imdbUrl">IMDB URL</label>
-                    <input type="url" name="imdbUrl" id="imdbUrl">
-                </div>
-                <input type="submit">
-            </form>
+    <div class="formsToggle">
+      <form method="post" action="/actors/newactor">
+        <div>
+          <label for="imageUrl">Image URL</label>
+          <input type="url" name="imageUrl" id="imageUrl" value="https://placekitten.com/380/268">
         </div>
+        <div class="double">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" required>
 
-        <form class="sortList">
-            <select onchange="window.location.href=this.value">
-                <option value="" selected hidden>Sort by</option>
-                <option value="allactors?sort=firstname">First Name</option>
-                <option value="allactors?sort=lastname">Last Name</option>
-            </select>
-        </form>
+          <label for="activeYearsStart">Year Started</label>
+          <input type="number" name="activeYearsStart" id="activeYearsStart" min="0" value="0">
+        </div>
+        <div class="double">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" required>
 
-        <ul class="collectionList">
-            <li th:each="actor : ${actors}" class="movieItems">
-                <a th:href="${'/actors/update/' + actor.getId()}">
-                    <div>
-                        <h3 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h3>
-                        <img th:src="${actor.getImageUrl()}">
+          <label for="activeYearsEnd">Year Ended</label>
+          <input type="number" name="activeYearsEnd" id="activeYearsEnd" min="0" value="0">
+        </div>
+        <div>
+          <label for="imdbUrl">IMDB URL</label>
+          <input type="url" name="imdbUrl" id="imdbUrl">
+        </div>
+        <input type="submit">
+      </form>
+    </div>
 
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </main>
-    <div th:replace="~{common :: footer}"></div>
+    <form class="sortList">
+      <label for="nameSearch">Search By Last Name</label>
+      <input type="text" name="keyword" id="nameSearch">
+      <select onchange="window.location.href=this.value">
+        <option value="" selected hidden>Sort by</option>
+        <option value="allactors?sort=firstname">First Name</option>
+        <option value="allactors?sort=lastname">Last Name</option>
+      </select>
+    </form>
+
+    <ul class="collectionList">
+      <li th:each="actor : ${actors}" class="movieItems">
+        <a th:href="${'/actors/update/' + actor.getId()}">
+          <div>
+            <h3 th:text="${actor.getFirstName() + ' ' + actor.getLastName()}"></h3>
+            <img th:src="${actor.getImageUrl()}">
+
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+  <div th:replace="~{common :: footer}"></div>
 </body>
 
 </html>

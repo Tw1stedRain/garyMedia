@@ -22,13 +22,18 @@ public class ActorController {
     @GetMapping("/allactors")
     public String allActors(
             Model model,
-            @RequestParam(required = false, defaultValue = "lastname") String sort
+            @RequestParam(required = false, defaultValue = "lastname") String sort,
+            @RequestParam(required = false) String keyword
             ){
         List<Actor> actors = actorRepo.findAll();
         if (sort.equals("firstname")){
             actors = actorRepo.findAllByOrderByFirstName();
         } else if (sort.equals("lastname")){
-            actors = actorRepo.findAllByOrderByLastName();
+            if (keyword != null){
+                actors = actorRepo.findByLastNameIgnoreCase(keyword);
+            } else {
+                actors = actorRepo.findAllByOrderByLastName();
+            }
         }
 
         model.addAttribute("actors", actors);
