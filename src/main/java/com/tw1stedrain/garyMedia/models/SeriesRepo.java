@@ -7,4 +7,6 @@ import java.util.List;
 public interface SeriesRepo extends JpaRepository<Series, Long> {
 
     List<Series> findAllByOrderByName();
+
+    List<Series> findByNameContains(String name);
 }

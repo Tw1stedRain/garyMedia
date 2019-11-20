@@ -28,11 +28,16 @@ public class SeriesController {
     @GetMapping("/allseries")
     public String allSeries(
             Model model,
-            @RequestParam(required = false, defaultValue = "name") String sort
+            @RequestParam(required = false, defaultValue = "name") String sort,
+            @RequestParam(required = false) String keyword
             ){
         List<Series> series = seriesRepo.findAll();
         if (sort.equals("name")){
-            series = seriesRepo.findAllByOrderByName();
+            if (keyword != null){
+                series = seriesRepo.findByNameContains(keyword);
+            } else {
+                series = seriesRepo.findAllByOrderByName();
+            }
         }
 
         model.addAttribute("series", series);

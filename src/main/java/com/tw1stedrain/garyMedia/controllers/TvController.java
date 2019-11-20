@@ -25,17 +25,27 @@ public class TvController {
     @GetMapping("/allTv")
     public String allTv(
             Model model,
-            @RequestParam(required = false, defaultValue = "title") String sort
+            @RequestParam(required = false, defaultValue = "title") String sort,
+            @RequestParam(required = false)String keyword
             ){
         List<TvSeason> tvSeasons = tvRepo.findAll();
-        if (sort.equals("title")){
-            tvSeasons = tvRepo.findAllByOrderByTitle();
-        } else if (sort.equals("episodes")){
-            tvSeasons = tvRepo.findAllByOrderByNumOfEpisodes();
-        } else if (sort.equals("genre")){
-            tvSeasons = tvRepo.findAllByOrderByGenre();
-        } else if (sort.equals("rating")){
-            tvSeasons = tvRepo.findAllByOrderByRating();
+        switch (sort) {
+            case "title":
+                if (keyword != null){
+                    tvSeasons = tvRepo.findByTitleContains(keyword);
+                } else {
+                tvSeasons = tvRepo.findAllByOrderByTitle();
+                }
+                break;
+            case "episodes":
+                tvSeasons = tvRepo.findAllByOrderByNumOfEpisodes();
+                break;
+            case "genre":
+                tvSeasons = tvRepo.findAllByOrderByGenre();
+                break;
+            case "rating":
+                tvSeasons = tvRepo.findAllByOrderByRating();
+                break;
         }
 
         model.addAttribute("seasons", tvSeasons);
