@@ -11,7 +11,7 @@
 .movieItems{
   background-color: rgba(146,116,83,0.7);
   border: 3px solid rgba(146, 116, 83);
-  height: 210px;
+  height: 220px;
   width: 20%;
   padding: 1%;
   margin: 1%;
@@ -24,6 +24,10 @@
 .movieItems div{
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .movieItems > a > div > h3{
