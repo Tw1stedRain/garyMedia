@@ -14,5 +14,7 @@ public interface TvSeasonRepo extends JpaRepository<TvSeason, Long> {
 
     List<TvSeason> findAllByOrderByRating();
 
+    List<TvSeason> findAllByLoanedTrue();
+
     List<TvSeason> findByTitleContains(String title);
 }
