@@ -3,94 +3,99 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <div th:replace="~{common :: styling}"></div>
-    <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
-    <title>All TV Seasons</title>
+  <meta charset="UTF-8">
+  <div th:replace="~{common :: styling}"></div>
+  <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
+  <title>All TV Seasons</title>
 </head>
 
 <body>
-    <div th:replace="~{common :: navbar}"></div>
-    <main>
-        <header>
-            <h1>Your Tv Season Collection</h1>
-        </header>
+  <div th:replace="~{common :: navbar}"></div>
+  <main>
+    <header>
+      <h1>Your Tv Season Collection</h1>
+    </header>
 
-        <button type="button" class="formButton">Add a New Season to Your Collection</button>
+    <button type="button" class="formButton">Add a New Season to Your Collection</button>
 
-        <div class="formsToggle">
-            <form method="post" action="/tv/newSeason">
-                <div>
-                    <label for="title">Title</label>
-                    <input id="title" name="title" required>
-                </div>
-                <div>
-                    <label for="coverArt">Cover Art</label>
-                    <input id="coverArt" name="coverArt" type="url" value="https://placekitten.com/380/268">
-                </div>
-                <div class="double">
-                    <label for="numOfEpisodes">Number of Episodes</label>
-                    <input id="numOfEpisodes" name="numOfEpisodes" type="number" min="1" value="1">
-
-                    <label for="releaseDate">Realease Year</label>
-                    <input id="releaseDate" name="releaseDate" type="number" min="0" max="3000" value="0">
-                </div>
-                <div class="double">
-                    <label for="dvdOrBluRay">DvD or BluRay</label>
-                    <input id="dvdOrBluRay" name="dvdOrBluRay">
-
-                    <label for="genre">Genre</label>
-                    <input id="genre" name="genre">
-                </div>
-                <div class="double">
-                    <label for="rating">Rating</label>
-                    <select name="rating" id="rating">
-                        <option value="" selected hidden>TVCR Rating</option>
-                        <option value="notYetRated">Not Yet Rated</option>
-                        <option value="TV-Y">TV-Y</option>
-                        <option value="TV-Y7">TV-Y7</option>
-                        <option value="TV-G">TV-G</option>
-                        <option value="TV-PG">TV-PG</option>
-                        <option value="TV-14">TV-14</option>
-                        <option value="TV-MA">TV-MA</option>
-                    </select>
-
-                    <label for="rottenTomatoes">Rotten Tomatoes Score</label>
-                    <input id="rottenTomatoes" name="rottenTomatoes" type="number" step="0.01" min="0" max="1" value="0">
-                </div>
-                <div>
-                    <label for="imdbLink">IMDB URL</label>
-                    <input id="imdbLink" name="imdbLink" type="url">
-                </div>
-                <input type="submit">
-
-            </form>
+    <div class="formsToggle">
+      <form method="post" action="/tv/newSeason">
+        <div>
+          <label for="title">Title</label>
+          <input id="title" name="title" required>
         </div>
+        <div>
+          <label for="coverArt">Cover Art</label>
+          <input id="coverArt" name="coverArt" type="url" value="https://placekitten.com/380/268">
+        </div>
+        <div class="double">
+          <label for="numOfEpisodes">Number of Episodes</label>
+          <input id="numOfEpisodes" name="numOfEpisodes" type="number" min="1" value="1">
 
-        <form class="sortList">
-            <label for="tvTitleSearch">Search By Title</label>
-            <input type="text" name="keyword" id="tvTitleSearch" placeholder="Case Sensitive">
-            <select onchange="window.location.href=this.value">
-                <option value="" selected hidden>Sort by</option>
-                <option value="allTv?sort=title">Title</option>
-                <option value="allTv?sort=episodes">Number of Episodes</option>
-                <option value="allTv?sort=genre">Genre</option>
-                <option value="allTv?sort=rating">TVCR Rating</option>
-            </select>
-        </form>
+          <label for="releaseDate">Realease Year</label>
+          <input id="releaseDate" name="releaseDate" type="number" min="0" max="3000" value="0">
+        </div>
+        <div class="double">
+          <label for="dvdOrBluRay">DvD or BluRay</label>
+          <!-- <input id="dvdOrBluRay" name="dvdOrBluRay"> -->
+          <select name="dvdOrBluRay" id="dvdOrBluRay">
+            <option value="" hidden>DVD or BluRay</option>
+            <option value="DVD">DVD</option>
+            <option value="BluRay">BluRay</option>
+          </select>
 
-        <ul class="collectionList">
-            <li th:each="season : ${seasons}" class="movieItems">
-                <a th:href="${'/tv/update/' + season.getId()}">
-                    <div>
-                        <h3 th:text="${season.getTitle()}"></h3>
-                        <img th:src="${season.getCoverArt()}">
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </main>
-    <div th:replace="~{common :: footer}"></div>
+          <label for="genre">Genre</label>
+          <input id="genre" name="genre">
+        </div>
+        <div class="double">
+          <label for="rating">Rating</label>
+          <select name="rating" id="rating">
+            <option value="" selected hidden>TVCR Rating</option>
+            <option value="notYetRated">Not Yet Rated</option>
+            <option value="TV-Y">TV-Y</option>
+            <option value="TV-Y7">TV-Y7</option>
+            <option value="TV-G">TV-G</option>
+            <option value="TV-PG">TV-PG</option>
+            <option value="TV-14">TV-14</option>
+            <option value="TV-MA">TV-MA</option>
+          </select>
+
+          <label for="rottenTomatoes">Rotten Tomatoes Score</label>
+          <input id="rottenTomatoes" name="rottenTomatoes" type="number" step="0.01" min="0" max="1" value="0">
+        </div>
+        <div>
+          <label for="imdbLink">IMDB URL</label>
+          <input id="imdbLink" name="imdbLink" type="url">
+        </div>
+        <input type="submit">
+
+      </form>
+    </div>
+
+    <form class="sortList">
+      <label for="tvTitleSearch">Search By Title</label>
+      <input type="text" name="keyword" id="tvTitleSearch" placeholder="Case Sensitive">
+      <select onchange="window.location.href=this.value">
+        <option value="" selected hidden>Sort by</option>
+        <option value="allTv?sort=title">Title</option>
+        <option value="allTv?sort=episodes">Number of Episodes</option>
+        <option value="allTv?sort=genre">Genre</option>
+        <option value="allTv?sort=rating">TVCR Rating</option>
+      </select>
+    </form>
+
+    <ul class="collectionList">
+      <li th:each="season : ${seasons}" class="movieItems">
+        <a th:href="${'/tv/update/' + season.getId()}">
+          <div>
+            <h3 th:text="${season.getTitle()}"></h3>
+            <img th:src="${season.getCoverArt()}">
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+  <div th:replace="~{common :: footer}"></div>
 </body>
 
 </html>
