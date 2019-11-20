@@ -49,6 +49,9 @@ public class MovieController {
             case "rating":
                 movies = movieRepo.findAllByOrderByRating();
                 break;
+            case "loaned":
+                movies = movieRepo.findAllByLoanedTrue();
+                break;
         }
 
         model.addAttribute("movies", movies);

@@ -14,5 +14,7 @@ public interface MovieRepo extends JpaRepository<Movie, Long> {
 
     List<Movie> findAllByOrderByRating();
 
+    List<Movie> findAllByLoanedTrue();
+
     List<Movie> findByTitleContains(String title);
 }

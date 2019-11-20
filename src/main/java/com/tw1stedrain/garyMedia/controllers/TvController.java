@@ -46,6 +46,8 @@ public class TvController {
             case "rating":
                 tvSeasons = tvRepo.findAllByOrderByRating();
                 break;
+            case "loaned":
+                tvSeasons = tvRepo.findAllByLoanedTrue();
         }
 
         model.addAttribute("seasons", tvSeasons);
