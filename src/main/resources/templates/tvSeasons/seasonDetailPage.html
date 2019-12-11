@@ -13,7 +13,7 @@
   <main>
     <header>
       <h1 th:text="${season.getTitle()}"></h1>
-      <form th:action="${'tv/season/' + season.getId()}" th:method="delete" class="delete">
+      <form th:action="${'/tv/season/' + season.getId()}" th:method="delete" class="delete">
         <button>Remove From Collection</button>
       </form>
     </header>
