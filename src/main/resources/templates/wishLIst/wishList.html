@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <div th:replace="~{common :: styling}"></div>
+  <link th:href="@{/css/collection.css}" rel="stylesheet" type="text/css">
+  <title>All Wishes</title>
+</head>
+
+<body>
+  <div th:replace="~{common :: navbar}"></div>
+  <main>
+    <header>
+      <h1>Your Wish List</h1>
+    </header>
+
+    <button type="button" class="formButton">Add a New Movie/TV Season to Your Wish List</button>
+
+    <div class="formsToggle">
+      <form method="post" action="/wishList/newwish">
+        <div>
+          <label for="title">Title</label>
+          <input id="title" name="title" required>
+        </div>
+        <div>
+          <label for="coverArt">Cover Art</label>
+          <input id="coverArt" name="coverArt" type="url" required>
+        </div>
+        <div>
+          <label for="tvOrMovie">TV or Movie</label>
+          <select name="tvOrMovie" id="tvOrMovie">
+            <option value="" hidden>TV or Movie</option>
+            <option value="TV">TV</option>
+            <option value="movie">Movie</option>
+          </select>
+        </div>
+        <div>
+          <label for="imdbLink">IMDB URL</label>
+          <input id="imdbLink" name="imdbLink" type="url" required>
+        </div>
+        <input type="submit">
+      </form>
+    </div>
+
+
+
+    <ul class="collectionList">
+      <li th:each="item : ${wishList}" class="movieItems wishItems">
+        <a th:href="${item.getImdbLink()}">
+          <div>
+            <h3 th:text="${item.getTitle()}"></h3>
+            <img th:src="${item.getCoverArt()}">
+            <form th:action="${'/wishList/wish/' + item.getId()}" th:method="delete">
+              <button>Remove from Wish List</button>
+            </form>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+  <div th:replace="~{common :: footer}"></div>
+
+</body>
+
+</html>

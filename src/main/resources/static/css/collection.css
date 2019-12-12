@@ -21,6 +21,22 @@
   box-shadow: 19px 30px 48px -34px rgba(51,48,51,0.68);
 }
 
+.wishItems{
+  height: 240px;
+}
+
+.wishItems form{
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.wishItems form button{
+  background-color: rgba(146,116,83,0.7);
+  color: rgb(192, 191, 190);
+  font-size: .8rem;
+}
+
 .movieItems div{
   height: 100%;
   width: 100%;
