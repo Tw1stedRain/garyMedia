@@ -81,7 +81,7 @@ form{
   flex-direction: column;
   padding: 2%;
   width: 90%;
-  margin: auto;
+  margin: 2% auto;
   border: 6px solid rgba(146,116,83);
   box-shadow: 26px 11px 45px 9px rgba(51,48,51,0.7);
 }
