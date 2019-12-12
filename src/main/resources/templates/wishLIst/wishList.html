@@ -43,7 +43,15 @@
       </form>
     </div>
 
-
+    <form class="sortList">
+      <label for="wishTitleSearch">Search By Title</label>
+      <input type="text" name="keyword" id="wishTitleSearch" placeholder="Case Sensitive">
+      <select onchange="window.location.href=this.value">
+        <option value="" selected hidden>Sort by</option>
+        <option value="allwishes?sort=title">Title</option>
+        <option value="allwishes?sort=tvOrMovie">TV to Movie</option>
+      </select>
+    </form>
 
     <ul class="collectionList">
       <li th:each="item : ${wishList}" class="movieItems wishItems">

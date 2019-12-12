@@ -20,9 +20,23 @@ public class WishListController {
 
     @GetMapping("/allwishes")
     public String allWishes(
-            Model model
+            Model model,
+            @RequestParam(required = false, defaultValue = "title") String sort,
+            @RequestParam(required = false) String keyword
     ){
         List<Wish> wishList = wishListRepo.findAll();
+        switch (sort) {
+            case "title":
+                if (keyword != null) {
+                    wishList = wishListRepo.findByTitleContains(keyword);
+                } else {
+                wishList = wishListRepo.findAllByOrderByTitle();
+                }
+                break;
+            case "tvOrMovie":
+                wishList = wishListRepo.findAllByOrderByTvOrMovie();
+                break;
+        }
 
         model.addAttribute("wishList", wishList);
         return "wishList/wishList";
