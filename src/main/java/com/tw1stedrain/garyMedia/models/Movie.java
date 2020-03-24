@@ -34,6 +34,8 @@ public class Movie {
     private double rottenTomatoes;
     private boolean loaned = false;
     private String loanedTo;
+    private boolean ownerChanged;
+    private String newOwner;
 
     @ManyToMany
     @JoinTable(
@@ -60,7 +62,6 @@ public class Movie {
         this.rating = rating;
         this.imdbLink = imdb;
         this.rottenTomatoes = tomatoes;
-
     }
 
     // **************************************************
@@ -157,6 +158,22 @@ public class Movie {
 
     public void setLoanedTo(String loanedTo) {
         this.loanedTo = loanedTo;
+    }
+
+    public boolean isOwnerChanged() {
+        return ownerChanged;
+    }
+
+    public void setOwnerChanged(boolean ownerChanged) {
+        this.ownerChanged = ownerChanged;
+    }
+
+    public String getNewOwner() {
+        return newOwner;
+    }
+
+    public void setNewOwner(String newOwner) {
+        this.newOwner = newOwner;
     }
 
     public Set<Actor> getMovieActors() {

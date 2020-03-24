@@ -35,6 +35,7 @@ public class TvSeason {
     private double rottenTomatoes;
     private boolean loaned = false;
     private String loanedTo;
+    private String newOwner;
 
     @ManyToMany
     @JoinTable(
@@ -148,6 +149,14 @@ public class TvSeason {
 
     public void setLoanedTo(String loanedTo) {
         this.loanedTo = loanedTo;
+    }
+
+    public String getNewOwner() {
+        return newOwner;
+    }
+
+    public void setNewOwner(String newOwner) {
+        this.newOwner = newOwner;
     }
 
     public String getDvdOrBluRay() {
