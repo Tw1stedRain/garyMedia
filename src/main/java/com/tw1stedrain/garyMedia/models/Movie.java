@@ -34,7 +34,7 @@ public class Movie {
     private double rottenTomatoes;
     private boolean loaned = false;
     private String loanedTo;
-    private boolean ownerChanged;
+    private boolean ownerChanged = false;
     private String newOwner;
 
     @ManyToMany
