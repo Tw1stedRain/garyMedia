@@ -95,6 +95,8 @@ public class TvController {
             @RequestParam double rottenTomatoes,
             @RequestParam boolean loaned,
             @RequestParam String loanedTo,
+            @RequestParam boolean ownerChanged,
+            @RequestParam String newOwner,
             @RequestParam Actor actor
     ){
         Optional<TvSeason> season = tvRepo.findById(id);
@@ -112,6 +114,8 @@ public class TvController {
             foundSeason.setRottenTomatoes(rottenTomatoes);
             foundSeason.setLoaned(loaned);
             foundSeason.setLoanedTo(loanedTo);
+            foundSeason.setOwnerChanged(ownerChanged);
+            foundSeason.setNewOwner(newOwner);
             foundSeason.addTvActor(actor);
 
             tvRepo.save(foundSeason);

@@ -101,6 +101,8 @@ public class MovieController {
             @RequestParam double tomatoes,
             @RequestParam boolean loaned,
             @RequestParam String loanedTo,
+            @RequestParam boolean ownerChanged,
+            @RequestParam String newOwner,
             @RequestParam Actor actor
     ){
         Optional<Movie> movie = movieRepo.findById(id);
@@ -118,6 +120,8 @@ public class MovieController {
             foundMovie.setRottenTomatoes(tomatoes);
             foundMovie.setLoaned(loaned);
             foundMovie.setLoanedTo(loanedTo);
+            foundMovie.setOwnerChanged(ownerChanged);
+            foundMovie.setNewOwner(newOwner);
             foundMovie.addMovieActor(actor);
 
             movieRepo.save(foundMovie);
